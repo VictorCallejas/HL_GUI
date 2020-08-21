@@ -1,0 +1,311 @@
+<div id="tablegroup " class="padding no-gutter box dark bg" style="height:100%">
+    <div class="row m-b" style="color: rgba(255,255,255, 0.8); margin-left: 8px; font-size: 1.1em;">
+        <div class="col-sm-6">
+            <div class="text-center padding">
+                <h4>IMU Data</h4>
+                <hr class="white lowMargin">
+            </div>
+            <div class="row" style="margin-left: 12px;">
+                <div class="col-sm-7 separatorV">
+                    <div class="row lowMargin">
+                        <div class="col-sm-6 border">
+                            <b>IMU Data</b>
+                        </div>
+                        <div class="col-sm-2">X</div>
+                        <div class="col-sm-2">Y</div>
+                        <div class="col-sm-2">Z</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Acceleration</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.acceleration.x}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.acceleration.y}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.acceleration.z}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Velocity</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.velocity.x}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.velocity.y}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.velocity.z}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Position</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.position.x}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.position.y}}</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.position.z}}</div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4" style="margin-left: 20px;">
+                    <div class="row lowMargin">
+                        <div class="col-sm-6 border">
+                            <b>Attitude</b>
+                        </div>
+                        <div class="col-sm-2">Value</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Roll</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.attitude.roll}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Pitch</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.attitude.pitch}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-6">Yaw</div>
+                        <div class="col-sm-2">{{data.tripData.imuData.attitude.yaw}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="text-center padding">
+                <h4>Encoders/Tapes Data</h4>
+                <hr class="white lowMargin">
+            </div>
+            <div class="row" style="margin-left: 12px;">
+                <div class="col-sm-6">
+                    <div class="row lowMargin">
+                        <div class="col-sm-8 border">
+                            <b>Motor Encoder Data</b>
+                        </div>
+                        <div class="col-sm-2">Value</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Front Motor Distance</div>
+                        <div class="col-sm-2">{{data.tripData.motorData.front_motor_encoder_distance}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Rear Motor Distance</div>
+                        <div class="col-sm-2">{{data.tripData.motorData.rear_motor_encoder_distance}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Front Motor Speed</div>
+                        <div class="col-sm-2">{{data.tripData.motorData.front_motor_encoder_speed}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Rear Motor Speed</div>
+                        <div class="col-sm-2">{{data.tripData.motorData.rear_motor_encoder_speed}}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row lowMargin">
+                        <div class="col-sm-8 border">
+                            <b>Tape Reader Data</b>
+                        </div>
+                        <div class="col-sm-2">Value</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Front Right</div>
+                        <div class="col-sm-2">{{data.tripData.tapereaderData.tapereader_fr}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Fron Left</div>
+                        <div class="col-sm-2">{{data.tripData.tapereaderData.tapereader_fl}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Rear Right</div>
+                        <div class="col-sm-2">{{data.tripData.tapereaderData.tapereader_rr}}</div>
+                    </div>
+                    <div class="row spacingLines">
+                        <div class="col-sm-8">Rear Left</div>
+                        <div class="col-sm-2">{{data.tripData.tapereaderData.tapereader_rl}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" style="margin-top: 1%">
+            <div class="text-center padding">
+                <h4>Sensor Data</h4>
+                <hr class="white lowMargin">
+            </div>
+            <div class="row" style="margin-left: 12px;">
+                <div class="col-sm-3 separatorV">
+                    <div class="col-sm-12" style="margin-left: -12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-3 border">
+                                <b>Battery</b>
+                            </div>
+                            <div class="col-sm-2">VLow</div>
+                            <div class="col-sm-2">VMean</div>
+                            <div class="col-sm-2">VHigh</div>
+                            <div class="col-sm-1">A</div>
+                            <div class="col-sm-1">T</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-3">Front</div>
+                            <div class="{{data.sensorData.batteries.front_pack_lowest_voltage < bat_front_v_low[0] || data.sensorData.batteries.front_pack_lowest_voltage > bat_front_v_low[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.front_pack_lowest_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.front_pack_mean_voltage < bat_front_v_mean[0] || data.sensorData.batteries.front_pack_mean_voltage > bat_front_v_mean[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.front_pack_mean_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.front_pack_highest_voltage < bat_front_v_high[0] || data.sensorData.batteries.front_pack_highest_voltage > bat_front_v_high[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.front_pack_highest_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.front_pack_current < bat_front_a[0] || data.sensorData.batteries.front_pack_current > bat_front_a[1] ? 'col-sm-1 dangerous-values' : 'col-sm-1 nominal-values'}}">{{data.sensorData.batteries.front_pack_current}}</div>
+                            <div class="{{data.sensorData.batteries.front_pack_temperature < bat_front_t[0] || data.sensorData.batteries.front_pack_temperature > bat_front_t[1] ? 'col-sm-1 dangerous-values' : 'col-sm-1 nominal-values'}}">{{data.sensorData.batteries.front_pack_temperature}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-3">Rear</div>
+                            <div class="{{data.sensorData.batteries.rear_pack_lowest_voltage < bat_rear_v_low[0] || data.sensorData.batteries.rear_pack_lowest_voltage > bat_rear_v_low[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.rear_pack_lowest_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.rear_pack_mean_voltage < bat_rear_v_mean[0] || data.sensorData.batteries.rear_pack_mean_voltage > bat_rear_v_mean[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.rear_pack_mean_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.rear_pack_highest_voltage < bat_rear_v_high[0] || data.sensorData.batteries.rear_pack__highest_voltage > bat_rear_v_high[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.batteries.rear_pack_highest_voltage}}</div>
+                            <div class="{{data.sensorData.batteries.rear_pack_current < bat_rear_a[0] || data.sensorData.batteries.rear_pack_current > bat_rear_a[1] ? 'col-sm-1 dangerous-values' : 'col-sm-1 nominal-values'}}">{{data.sensorData.batteries.rear_pack_current}}</div>
+                            <div class="{{data.sensorData.batteries.rear_pack_temperature < bat_rear_t[0] || data.sensorData.batteries.rear_pack_temperature > bat_rear_t[1] ? 'col-sm-1 dangerous-values' : 'col-sm-1 nominal-values'}}">{{data.sensorData.batteries.rear_pack_temperature}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 30px; margin-left: -12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-5 border">
+                                <b>Motor Data</b>
+                            </div>
+                            <div class="col-sm-2">V</div>
+                            <div class="col-sm-2">A</div>
+                            <div class="col-sm-2">T</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-5">Front</div>
+                            <div class="{{data.sensorData.motors.front_motor_voltage < motor_front_v[0] || data.sensorData.motors.front_motor_voltage > motor_front_v[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.front_motor_voltage}}</div>
+                            <div class="{{data.sensorData.motors.front_motor_current < motor_front_a[0] || data.sensorData.motors.front_motor_current > motor_front_a[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.front_motor_current}}</div>
+                            <div class="{{data.sensorData.motors.front_motor_temperature < motor_front_t[0] || data.sensorData.motors.front_motor_temperature > motor_front_t[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.front_motor_temperature}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-5">Rear</div>
+                            <div class="{{data.sensorData.motors.rear_motor_voltage < motor_rear_v[0] || data.sensorData.motors.rear_motor_voltage > motor_rear_v[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.rear_motor_voltage}}</div>
+                            <div class="{{data.sensorData.motors.rear_motor_current < motor_rear_a[0] || data.sensorData.motors.rear_motor_current > motor_rear_a[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.rear_motor_current}}</div>
+                            <div class="{{data.sensorData.motors.rear_motor_temperature < motor_rear_t[0] || data.sensorData.motors.rear_motor_temperature > motor_rear_t[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.motors.rear_motor_temperature}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 30px; margin-left: -12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-10 border">
+                                <b>Energy Data</b>
+                            </div>
+                            <div class="col-sm-2">Value</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Battery Switch</div>
+                            <div class="col-sm-2">{{data.sensorData.actuators.energy_BatteryASwitch}}</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 separatorV">
+                    <div class="col-sm-12" style="margin-left: 12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-10 border">
+                                <b>Pressure Data</b>
+                            </div>
+                            <div class="col-sm-2">Psi</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Ambient Pressure</div>
+                            <div class="col-sm-2">{{data.sensorData.pressure.amb_pres}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Pneumatic Circuit Low Pressure1</div>
+                            <div class="{{data.sensorData.pressure.pneumatic_circuit_pressure1 < pneumatic_pressure1[0] || data.sensorData.pressure.pneumatic_circuit_pressure1 > pneumatic_pressure1[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.pressure.pneumatic_circuit_pressure1}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Pneumatic Circuit Low Pressure2</div>
+                            <div class="{{data.sensorData.pressure.pneumatic_circuit_pressure2 < pneumatic_pressure2[0] || data.sensorData.pressure.pneumatic_circuit_pressure2 > pneumatic_pressure2[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.pressure.pneumatic_circuit_pressure2}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Pneumatic Circuit 3 Pressure</div>
+                            <div class="{{data.sensorData.pressure.pneumatic_circuit_pressure3 < pneumatic_pressure3[0] || data.sensorData.pressure.pneumatic_circuit_pressure3 > pneumatic_pressure3[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.pressure.pneumatic_circuit_pressure3}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Pneumatic Circuit 4 Pressure</div>
+                            <div class="{{data.sensorData.pressure.pneumatic_circuit_pressure4 < pneumatic_pressure4[0] || data.sensorData.pressure.pneumatic_circuit_pressure4 > pneumatic_pressure4[1] ? 'col-sm-2 dangerous-values' : 'col-sm-2 nominal-values'}}">{{data.sensorData.pressure.pneumatic_circuit_pressure4}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 30px; margin-left: 12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-9 border">
+                                <b>Other Data</b>
+                            </div>
+                            <div class="col-sm-2">Value</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-9">Ambient Pressure</div>
+                            <div class="col-sm-2">{{data.sensorData.other.amb_pres}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-9">Ambient Temperature</div>
+                            <div class="col-sm-2">{{data.sensorData.other.amb_temp}}</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 separatorV">
+                    <div class="col-sm-10" style="margin-left: 12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-10 border">
+                                <b>Actuator Data</b>
+                            </div>
+                            <div class="col-sm-2">Status (Value)</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Pneumatic Brakes</div>
+                            <div class="col-sm-2">{{data.sensorData.pneumatic.actuator2}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Electric Brakes</div>
+                            <div class="col-sm-2">{{data.sensorData.electric_brakes.position}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Brakes Valve 1</div>
+                            <div class="col-sm-2">{{data.sensorData.pneumatic.actuator1}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Brakes Valve 2</div>
+                            <div class="col-sm-2">{{data.sensorData.pneumatic.actuator2}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Brakes Valve 3</div>
+                            <div class="col-sm-2">{{data.sensorData.pneumatic.actuator3}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 separatorV">
+                    <div class="col-sm-10" style="margin-left: 12px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-10 border">
+                                <b>Electric Brakes</b>
+                            </div>
+                            <div class="col-sm-2">Position</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Electric Brakes</div>
+                            <div class="col-sm-2">{{data.sensorData.electric_brakes.position}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10" style="margin-left: 12px; margin-top: 20px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-10 border">
+                                <b>State Machine</b>
+                            </div>
+                            <div class="col-sm-2">Value</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Status</div>
+                            <div class="col-sm-2">{{data.stateMachine.status}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">SuperStatus</div>
+                            <div class="col-sm-2">{{data.stateMachine.superState}}</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-10">Last Status</div>
+                            <div class="col-sm-2">{{data.stateMachine.last_status}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10" style="margin-left: 12px; margin-top: 20px;">
+                        <div class="row lowMargin">
+                            <div class="col-sm-6 border">
+                                <b>Message Data</b>
+                            </div>
+                            <div class="col-sm-5">Value</div>
+                        </div>
+                        <div class="row spacingLines">
+                            <div class="col-sm-6">Timestamp</div>
+                            <div class="col-sm-5">{{data.messageData.timestamp}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

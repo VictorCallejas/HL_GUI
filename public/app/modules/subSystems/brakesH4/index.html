@@ -1,0 +1,82 @@
+
+
+
+ <body> 
+    <!--SIDEBAR-->
+    <div id="aside" class="app-aside modal fade folded md nav-expand">
+        <div class="left navside dark dk" layout="column">
+        <div ng-include="'app/template/sidebar.html'"></div>
+    </div>
+    </div>
+    <Check></Check>
+    <div ng-include="'app/directives/components/notice.html'"></div>
+    <!--END SIDEBAR-->
+    
+    <div class = "title">
+        Brakes & Pneumatics System
+    </div>
+
+
+    <div>
+      <!-- Pneumatic image-->
+        <img src="{{pneumatic_circuit}}" style="margin-top: 0%; margin-left: 6%; width: 85%; height: 100%" />
+        <span style="position: absolute; top: 22%; left: 20.5%; color: white; font-size:1.7em;"> {{data.p.T1}}ºC</span>
+        <span style="position: absolute; top: 22%; left: 9%; color: white; font-size:1.7em;">{{data.p.T2}}ºC </span>
+
+        <!--
+        <switch name="valve1" class="brakes" ng-model="valve1" on="Open" off="Closed" ng-click="openValve();"style="position: absolute; width: 100px; height: 40px; margin: 0; top: 47%; left: 30%;"></switch>
+        -->
+
+        <!-- Switch electroValve -->
+        <!--<i class="fa fa-toggle-on" ng-class="isActive?'active':'fa-rotate-180 inactive'" ng-click="isActive=!isActive; openValve();" style="position: absolute;  margin: 0; top: 45%; left: 30%;"/>-->
+        
+        <span style="position: absolute; top: 36.5%; left: 6%; color: white;font-size:1.7em;"> {{data.p.HP1}} bar</span>
+        <span style="position: absolute; top: 36.5%; left:22%; color: white;font-size:1.7em;">{{data.p.HP2}} bar </span>
+        <span style="position: absolute; top: 50%; left: 17%; color: white;font-size:1.7em;">{{data.p.LP2}} bar </span>
+        <span style="position: absolute; top: 50%; left: 43%; color: white;font-size:1.7em;">{{data.p.LP1}} bar </span>
+        
+    </div>
+    <div>
+        <hr style="width: 100%; height:1px;border-top:1px solid yellow" />
+    </div>
+
+    <div class="pneumatic-grid"style="margin-top: 4%">
+            <div style="display: grid;
+            grid-template-columns: 1fr 0.5fr 1fr 0.5fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;column-gap: 10px">
+            
+                <span style="color: yellow; font-size:1.7em;text-align:right;width: 350px"> Ambient pressure:</span> 
+                <span style="color: white; font-size:1.7em;"> {{data.o.p}} bar</span>       
+
+                <span style="color: yellow; font-size:1.7em;text-align:right;width: 350px"> Electrovalve:</span>
+                <span style="color: white; font-size:1.7em;"> {{data.p.v == 0 ? 'OPENED' : 'CLOSED' }}</span>
+
+                <span style="color: yellow; font-size:1.7em;text-align:right"> Tank 1 temperature: </span>
+                <span style="color: white; font-size:1.7em;">{{data.p.T1}} ºC</span>
+    
+                <span style="color: yellow; font-size:1.7em;text-align:right">  Tank 2 temperature:</span>
+                <span style="color: white; font-size:1.7em;">{{data.p.T2}} ºC</span>
+
+                <span style="color: yellow; font-size:1.7em;text-align:right"> Tank 1 high pressure:</span>
+                <span style="color: white; font-size:1.7em;">{{data.p.HP1}} bar</span>
+    
+                <span style="color: yellow; font-size:1.7em;text-align:right"> Tank 2 high pressure:</span>
+                <span style="color: white; font-size:1.7em;">{{data.p.HP2}} bar</span>
+    
+                <span style="color: yellow; font-size:1.7em;text-align:right"> Electrovalve pressure 1:</span>
+                <span style="color: white; font-size:1.7em;">{{data.p.LP2}} bar</span>
+
+                <span style="color: yellow; font-size:1.7em;text-align:right"> Electrovalve pressure 2:</span>
+                <span style="color: white; font-size:1.7em;"> {{data.p.LP1}} bar</span>
+  
+            </div>
+        <!--Right col grid-->
+        <div class="col-md-10">   
+            <button class="{{data.p.v == 0 ? 'red-fill fill' : 'green-fill fill'}}" style="white-space: nowrap; margin-left: 10%; width: 100%; height: 25%; font-size:1.5em;" ng-click="emergencyShutOff()">{{data.p.v == 0 ? 'Brake All' : 'Free All'}}</button>     
+            <label class="{{brakesErrors == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="margin-left: 10%; font-size: 2em; width: 100%;">{{brakesErrors == false ? 'Sensors OK' : 'Error in sensors'}}</label> 
+            <label class="green pulsate text-center" style="margin-left: 10%; font-size: 2em; width: 100%;">{{listBadActuators}}</label> 
+        </div>  
+      </div>
+    
+
+</body>

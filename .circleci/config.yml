@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    branches:
+      only:
+        - master
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: npm install
+      - run: sudo npm install bower -g
+      - run: bower install
+      - run: sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install wine32
+      - run: npm run deploy-full
+      - run: sudo apt-get install python-pip && sudo pip install awscli
+      - run: aws s3 cp bundle-win.zip s3://hyperloopupv/GUI/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - run: aws s3 cp bundle-mac.zip s3://hyperloopupv/GUI/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - run: aws s3 cp bundle-linux.zip s3://hyperloopupv/GUI/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - store_artifacts:
+          path: bundle-win.zip
+          destination: gui
+      - store_artifacts:
+          path: bundle-mac.zip
+          destination: gui
+      - store_artifacts:
+          path: bundle-linux.zip
+          destination: gui

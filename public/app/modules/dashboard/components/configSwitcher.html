@@ -1,0 +1,39 @@
+<!-- theme switcher -->
+<div id="switcher">
+    <div ng-class="configBarState ? 'active' : ''" class="switcher box-color dark-white text-color" id="sw-theme">
+        <a href ng-click="toggleConfigView()" target="#sw-theme" class="box-color dark-white text-color sw-btn">
+            <i class="fa fa-gear"></i>
+        </a>
+        <div class="box-header">
+            <h2>Config Switcher</h2>
+        </div>
+        <div class="box-divider"></div>
+        <div class="box-body">
+            <p class="hidden-md-down">
+                <label class="md-check m-y-xs" data-target="folded">
+                    <input type="checkbox" ng-click="select(0)" ng-model="checked" ng-true-value="0">
+                    <i class="blue"></i>
+                    <span  class="hidden-folded">Position Config</span>
+                </label>
+                <br>
+                <label class="md-check m-y-xs" data-target="folded">
+                    <input type="checkbox" ng-click="select(1)" ng-model="checked"  ng-true-value="1">
+                    <i class="blue"></i>
+                    <span class="hidden-folded">Config 1 -- Health Check</span>
+                </label>
+                <br>
+                <label class="md-check m-y-xs" data-target="boxed">
+                    <input type="checkbox" ng-click="select(2)" ng-model="checked" ng-true-value="2">
+                    <i class="blue"></i>
+                    <span class="hidden-folded">Config 2 -- Actuator Controls</span>
+                </label>
+                <br>
+            </p>
+            <div class="box-divider"></div>
+            <div class="box-header" style="padding-bottom: 30px;">
+                <a ng-click="apply()" class="btn-sm blue rounded spacing-buttons" style="float: right; color: #FFF">Apply Config</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / -->

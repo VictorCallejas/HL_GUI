@@ -1,0 +1,278 @@
+<body class="smart pace-done dark">
+    <div id="overlay">
+      <div ng-include="'app/template/configRun.html'"></div>
+      <div ng-include="'app/template/configMiddleware.html'"></div>
+      <div ng-include="'app/template/mainTest.html'"></div>
+    </div>
+    <Check></Check>
+    <div ng-include="'app/directives/components/notice.html'"></div>
+    <!--SIDEBAR-->
+    <div id="aside" class="app-aside modal fade folded md nav-expand">
+      <div class="left navside dark dk" layout="column">
+        <div ng-include="'app/template/sidebar.html'"></div>
+  
+      </div>
+    </div>
+    <!--END SIDEBAR-->
+  
+    <!--START CONTENT -->
+    <div id="dash-content" class="app-content box-shadow-z0" role="main">
+      <div id="c1" style="color: #eeeeee;">
+        <div id="dash-info">
+            <div id="sensorValues">
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="{{alive == 1 ? 'green-text' : 'red-text'}} pulsate">{{alive == 1 ? 'ACTIVE' : 'NONE'}}</div>
+                    <label>UpLink</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="red-text">{{actualState}}</div>
+                    <label>Pod State</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="red-text">{{previousState}}</div>
+                    <label>Pod Previous State</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="blue-text">{{data.td.p}}</div>
+                    <label>Distance(m)</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div id="countdown" class="green-text">
+                        {{runTime}}
+                    </div>
+                    <label>{{timerLabel}}</label>
+                </div>
+            </div>
+        </div>
+        <div id="dash-systems">
+            <div class="row" style="width: 100%; margin-left: 0%">
+                <div class="col-sm-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Timestamp</td>
+                                <td>{{data.ts}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tape counter</td>
+                                <td>{{data.td.c}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pressure</td>
+                                <td>{{data.o.p}}</td>
+                            </tr>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>{{data.o.t}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Motor</td>
+                                <td class="{{systemMotor == true ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{systemMotor == true ? 'OK' : 'ERR'}}</td>
+                            </tr>
+                            <tr>
+                                <td>BMS HV</td>
+                                <td class="{{systemBMSHV == true ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{systemBMSHV == true ? 'OK' : 'ERR'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Brakes</td>
+                                <td class="{{systemBrakes == true ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{systemBrakes == true ? 'OK' : 'ERR'}}</td>
+                            </tr>
+                            <tr>
+                                <td>BMS LV</td>
+                                <td class="{{systemBMSLV == true ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{systemBMSLV == true ? 'OK' : 'ERR'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="dash-graphics">
+          <div id="dash-graphics-velacc" style="height: 580px;">
+         </div>
+         <p style="width: 100%; text-align: center; font-size: 1.5em; margin-top: 20px;">
+             Distance to end: {{data.td.d}} m
+         </p>
+         <!--
+         <div id="dash-graphics-run"style="height: 250px">
+         </div>
+        -->
+        </div>
+      </div>
+      <div id="c2">
+        <div id="dash-gauges" style="padding-top: 20px"> 
+          <just-gage id="RPM" min=0 max=41000 value=averageRPM title="RPM" options="{
+                      label: 'n',
+                      gaugeWidthScale: 0.3,
+                      decimals: 0,
+                      humanFriendlyDecimal: true,
+                      counter: true,
+                      noGradient: true,
+                      valueFontColor:'#fff',
+                      relativeGaugeSize: true
+          
+            }"></just-gage>
+  
+            <just-gage id="Acceleration" min=-40 max=40 value=data.td.a.x title="Acceleration" options="{
+                      label: 'm/s²',
+                      gaugeWidthScale: 0.3,
+                      decimals: 2,
+                      humanFriendlyDecimal: true,
+                      counter: true,
+                      noGradient: true,
+                      valueFontColor:'#fff',
+                      relativeGaugeSize: true,
+                      levelColors: ['#ce9b1b']
+          
+              }"></just-gage>
+  
+              <just-gage id="Speed" min=0 max=500 value=data.td.v title="Speed" options="{
+                        label: 'Km/h',
+                        gaugeWidthScale: 0.3,
+                        decimals: 2,
+                        humanFriendlyDecimal: true,
+                        counter: true,
+                        noGradient: true,
+                        valueFontColor:'#fff',
+                        relativeGaugeSize: true
+            
+                }"></just-gage>
+        </div>
+  
+        <div id="achivements">
+          <h3>Achivements</h3>
+          <hr style="background-color: white; width: 90%;">
+          <h4>Max Velocity </h4>
+          <div class="max_ach">
+              <h4>{{maxVel}}</h4>
+              <h6>Km/h</h6>
+          </div>
+          <h4>Max Acceleration</h4>
+          <div class="max_ach">
+              <h4>{{maxAcc}}</h4>
+              <h6> m/s² </h6>
+          </div>
+        </div>
+              
+  
+      </div>
+  
+      <div id="c3">
+        <div id="dash-buttons">
+
+            <div style="display:inline-flex;width:100%">
+                  <button type="file" class="yellow-fill fill" style="width: -webkit-fill-available;" ng-click="simulation()" ng-disabled="isSimulationDisabled">Simulation</button>
+                  <button class="blue-fill fill" style="width: -webkit-fill-available;" ng-click="report()">Generate report</button>
+            </div>
+
+            
+       <button class="fill {{!(actualState == 'IDLE' || actualState == 'TST') ? 'gray-fill' : 'green-fill' }}" style="width: -webkit-fill-available;" ng-click="confirm('test')" ng-disabled="isTestOrReadyDisabled">{{isTest == true ? 'Test' : 'Ready'}}</button>
+       <!--<button class="fill {{!(actualState == 'IDLE' || actualState == 'TST') ? 'gray-fill' : 'green-fill' }}" style="width: -webkit-fill-available;" ng-click="confirm('test')" ng-disabled="!(actualState == 'IDLE' || actualState == 'TST')">{{isTest == true ? 'Test' : 'Ready'}}</button>-->
+            <button class="fill {{actualState != 'RDY' ? 'gray-fill' : 'green-fill' }}" style="width: -webkit-fill-available;" ng-click="confirm('start')" ng-disabled="!(!isStartDisabled)">Start</button><!-- && areConfigurationParamsValid -->
+            
+            <button class="red-fill fill" style="width: -webkit-fill-available;height:200px;font-size: 1.5em;" ng-click="brake()">Emergency Brake</button>
+          
+            <button class="fill {{actualState != 'BRK' ? 'gray-fill' : 'green-fill' }}" style="width: -webkit-fill-available;" ng-click="confirm('crawler')"ng-disabled="isCrawlingDisabled">Crawling</button>
+            <button class="yellow-fill fill" style="width: -webkit-fill-available;" ng-click="showMainTest()">Nominal</button>
+        </div>
+        <div id="dash-switches">
+          <div class="dash-input-wrapper">
+            <p style="color:#ffffff;font-size: 17px"><b>Isolation</b></p> 
+            <label class="form-switch">
+                <input type="checkbox" ng-click="confirm('isolation')" id="contactores" ng-disabled="isIsolationDisabled">
+                <i></i></label>
+              </body>
+          </div>
+          <div class="dash-input-wrapper">
+              <p style="color:#ffffff;font-size: 17px"><b>Pneumatics</b></p> 
+              <label class="form-switch">
+                  <input type="checkbox" ng-click="confirm('pneumatics')" id="neumatica" ng-disabled="isPneumaticsDisabled">
+                  <i></i></label>
+            </div>
+        </div>
+  
+        <div class="dash-params">
+            
+                <div class="text-center" style="margin-top: 2%">
+                    <h3>Run parameters</h3>
+                </div>
+  
+                <hr style="background-color: white; width: 90%;">
+        
+                <table class="table" style="margin-top: 5%; margin: auto;margin-bottom: 25px; width: 90%; font-size: 1.2em;">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Max Stripe Count</td>
+                            <td>{{maxstripecount}}</td>
+                        </tr>          
+                        
+                        <tr>
+                            <td>Max Speed</td>
+                            <td>{{maxspeed}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ramp Timeout</td>
+                            <td>{{motorsRamp}}</td>
+                          </tr>
+                        <!--
+                        <tr>
+                          <td>Timeout</td>
+                          <td>{{timeout}}</td>
+                        </tr>
+                        -->
+                    </tbody>
+                </table>
+                <div style="display:inline-flex;width:100%">
+                    <button class="blue-fill fill normal" ng-click="runShow()" ng-disabled="isConfigRunDisabled" style="margin-top: -3%; width: -webkit-fill-available;">Configure</button>  
+                </div>   
+        </div>
+      </div>
+    </div>
+  </body>

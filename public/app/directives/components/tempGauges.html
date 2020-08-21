@@ -1,0 +1,80 @@
+<div class="row" style="padding-top: 20px;">
+    <div class="col-sm-3">
+        <span style="position: absolute; margin-left: 30px; top: 10px;">Front Motor Temperature</span>
+        <just-gage id="gaugeTempFM" min=-10 max=100 value=data.sensorData.motors.front_motor_temperature title="" options="{
+                        label: 'C',
+                        gaugeWidthScale: 0.6,
+                        decimals: 2,
+                        humanFriendlyDecimal: true,
+                        counter: true,
+                        valueFontColor:'#fff',
+                        relativeGaugeSize: true,
+                        customSectors: {
+                            percents: true,
+                            ranges: [{
+                              color : '#43bf58',
+                              lo : 0,
+                              hi : 80
+                            },{
+                              color : '#ff3b30',
+                              lo : 80,
+                              hi : 100
+                            }]
+                          }
+            
+                    }">
+        </just-gage>
+    </div>
+    <div class="col-sm-3">
+        <span style="position: absolute; margin-left: 35px; top: 10px;">Rear Motor Temperature</span>
+        <just-gage id="gaugeTempRM" min=-10 max=100 value=data.sensorData.motors.rear_motor_temperature title="" options="{
+                            label: 'C',
+                            gaugeWidthScale: 0.6,
+                            decimals: 2,
+                            humanFriendlyDecimal: true,
+                            counter: true,
+                            valueFontColor:'#fff',
+                            relativeGaugeSize: true,
+                            customSectors: {
+                                percents: true,
+                                ranges: [{
+                                  color : '#43bf58',
+                                  lo : 0,
+                                  hi : 80
+                                },{
+                                  color : '#ff3b30',
+                                  lo : 80,
+                                  hi : 100
+                                }]
+                              }
+                
+                        }">
+        </just-gage>
+    </div>
+    <div class="col-sm-3">
+        <span style="position: absolute; margin-left: 35px; top: 10px;">Front Battery Temperature</span>
+        <just-gage id="gaugeTempFP" min=-10 max=100 value=data.sensorData.batteries.front_pack_temperature title="" options="{
+                                label: 'C',
+                                gaugeWidthScale: 0.6,
+                                decimals: 2,
+                                humanFriendlyDecimal: true,
+                                counter: true,
+                                valueFontColor:'#fff',
+                                relativeGaugeSize: true,
+                                customSectors: {
+                                    percents: true,
+                                    ranges: [{
+                                      color : '#43bf58',
+                                      lo : 0,
+                                      hi : 80
+                                    },{
+                                      color : '#ff3b30',
+                                      lo : 80,
+                                      hi : 100
+                                    }]
+                                  }
+                    
+                            }">
+        </just-gage>
+    </div>
+</div>

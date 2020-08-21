@@ -1,0 +1,84 @@
+<div ng-show="configMiddleware" class="overlay">
+    <div class="row m-b" style="margin-top: 15%;min-width: 600px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-3">
+            <div class="box">
+                <div class="box-header dker">
+                    <h3>Middleware</h3>
+                    <small>Enter parameters to configure middleware</small>
+                </div>
+                <div class="box-body" style="margin-left: 20px;">
+                    <div class="row">
+                        <div style="display: inline;">
+                            <small>POD IP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </small>
+                            <div style="display: inline-block;">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="podIP" placeholder="192.168.1.21">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <small>
+                                POD PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </small>
+                            <div style="display: inline-block;">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="podPort" placeholder="1337">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <small>
+                                SpaceX IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </small>
+                            <div style="display: inline-block;">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="spacexIP" placeholder="192.168.8.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div>
+                            <small>
+                                SpaceX Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </small>
+                            <div style="display: inline-block;">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="spacexPort" placeholder="3000">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <small>
+                                Keep Alive Frequency 
+                            </small>
+                            <div style="display: inline-block;">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="keepAlive" placeholder="50">
+                                </div>
+                            </div>
+                            <small>
+                                <i>ms</i>
+                            </small>
+                        </div>
+                    </div>
+                
+                    <div style="margin-left: -20px; margin-top: 10px;">
+                        <button class="btn btn-outline rounded b-info text-info" ng-click="configureMiddleware()">Configure</button>
+                        <button class="btn btn-outline rounded b-info text-info" ng-click="hideMiddleware()">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

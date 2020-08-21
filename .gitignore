@@ -1,0 +1,6 @@
+/node_modules/
+/public/assets/bower_components/
+/release/
+bundle-win.zip
+bundle-mac.zip
+bundle-linux.zip

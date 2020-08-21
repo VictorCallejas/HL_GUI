@@ -1,0 +1,72 @@
+<div ng-show="mainTest"  class="overlay" style="max-width: 99%">
+    <div class="row m-b" style="margin-top: 10%;min-width: 600px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="box">
+                <div class="box-header dker">
+                    <h3>Full Test</h3>
+                    <small>Testing everithing is nominal</small>
+                </div>
+                <div class="box-body" style="margin-left: 20px;overflow-y:scroll;max-height:450px">
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_imu"style="margin-right:25px;font-size:40px;"></div>
+                            <p id="name_imu"style="margin-top: 10px">Trip Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_imu" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_bms"style="margin-right:25px;font-size:40px;"></div>
+                            <p id="name_bms"style="margin-top: 10px">BMS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_bms" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_avionics"style="margin-right:25px;font-size:40px;"></div>
+                            <p id="name_avionics"style="margin-top: 10px">AVIONICS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_avionics" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_brakes"style="margin-right:25px;font-size:40px;"></div>
+                            <p id="name_brakes"style="margin-top: 10px">BRAKES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_brakes" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_motores"style="margin-right:25px;font-size:40px;"></div>
+                            <p id="name_motores"style="margin-top: 10px">MOTORES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_motores" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: inline-flex ">
+                            <div class="icon_others"style="margin-right:25px;font-size:40px;"></div>
+                             <p id="name_others" style="margin-top: 10px">OTHERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                            <div id="err_others" style="display:block;margin: 10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dker"style=" margin-top: 10px;">
+                    <button style="margin-left: 10px;" class="btn btn-outline rounded b-info text-info" ng-click="hideMainTest()">Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

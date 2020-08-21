@@ -1,0 +1,799 @@
+<body>
+		<!--SIDEBAR-->
+		<div id="aside" class="app-aside modal fade folded md nav-expand">
+			<div class="left navside dark dk" layout="column">
+				<div ng-include="'app/template/sidebar.html'"></div>
+			</div>
+		</div>
+		<Check></Check>
+		<div ng-include="'app/directives/components/notice.html'"></div>
+		<!--END SIDEBAR-->
+			
+	
+		<!-- MAIN CONTENT -->
+	
+		<div style="display:inline-flex;height: 80px;width:100%;padding: 10px 0px 10px 150px;color:white">
+			<p style="width: 600px;font-size:3em;margin-right:200px">Battery Management System</p>
+			<p style="margin-left:40px;margin-top:23px;font-size: 2em">Voltage: </p>
+			<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1em; width: 150px; height: 50px; margin-left: 0.75em;margin-top:20px;padding-top:15px">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+			<p style="margin-left:40px;margin-top:23px;font-size:2em">Current:</p>
+			<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1em; width: 150px; height: 50px;  margin-left: 0.75em;margin-top:20px;padding-top:15px">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+			<button class = "{{data.e.c == 1 ? 'red-fill fill' : 'green-fill fill'}}" style="height:50px;margin-top: 20px;margin-left:100px" type="button"  ng-click="contactores()">{{data.e.c == 1 ? 'TURN OFF' : 'TURN ON'}}</button>
+		</div>	
+		<!--				
+		<div class="bms-box">
+			<br>
+			<p style="font-size:1.5em; text-align: center;">Voltage: 
+				<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1.5em; width: 80%; height: 14%; margin-left: 0.75em;">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+			</p>
+			<br>
+			<p style="font-size:1.5em; text-align: center;">Current: 
+					<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1.5em; width: 80%; height: 14%;  margin-left: 0.75em; margin-top: 1em;">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+			</p>			
+		</div>
+		-->
+		
+	
+		
+		<div class="bms-container">
+
+				<!-- BOX 1 -->
+				<div class="bms-box">
+					<!-- Line 1 -->
+					<span id="bms1line1cells" class="bmsCells">
+							<span style="padding-left: 2em"> {{data.e.b1.cT1}} ºC
+									<!-- <img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+						
+							<span style="padding-left: 2em"> {{data.e.b1.cT2}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT3}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT4}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT5}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT6}} ºC 
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+					</span>
+					<div class="bms-line">
+						<p id="bms1line1">
+							
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 < 75 ? './assets/img/bat-bms-yellow.png'  : './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 1 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 2 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 3 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 4 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v1 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 5 </span>
+							
+							<table class="bmsTable">
+								<tr>
+									<td style= "width: 60%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 1 &nbsp; </span></td>
+								</tr>								
+								<tr> 
+									<td> Max V1: {{data.e.b1.maxV1}} V</td>	
+									<td> Pack V: {{data.e.b1.v1}} V</td>								
+								</tr>
+								<tr>
+									<td> Min V1: {{data.e.b1.minV1}} V</td>
+									<td> Pack %: {{data.e.b1.p1}} %</td>
+								</tr>
+								<tr> 
+									<td> Current 1: {{data.e.b1.c1}} A</td>
+								</tr>
+								
+							</table>
+							
+							
+						</p>
+					</div>
+					<!-- End Line 1 -->
+					<hr>
+					<!-- Line 2 -->
+					<span id="bms1line1cells" class="bmsCells">
+							<span style="padding-left: 2em"> {{data.e.b1.cT7}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+						
+							<span style="padding-left: 2em"> {{data.e.b1.cT8}} ºC
+								<!--<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT9}} ºC
+								<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT10}} ºC
+								<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT11}} ºC
+								<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+
+							<span style="padding-left: 2em"> {{data.e.b1.cT12}} ºC 
+								<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+							</span>
+						
+					</span>
+					<div class="bms-line">
+						<p id="bms1line2">
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 6 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 7 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 8 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 9 </span>
+							<img draggable="false" class="bms-battery" src="{{data.e.b1.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b1.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+							<span class="battery-id"> 10 </span>
+							<table class="bmsTable">
+									<tr> 
+										<td> Max V2: {{data.e.b1.maxV2}} V</td>
+										<td> Pack V: {{data.e.b1.v2}} V</td>									
+									</tr>
+									<tr>
+										<td> Min V2: {{data.e.b1.minV2}} V</td>
+										<td> Pack %: {{data.e.b1.p2}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 2: {{data.e.b1.c2}} A</td>
+									</tr>
+							</table>
+						</p>
+					</div>
+					<!-- End Line 2 -->
+				</div>
+				<!-- END BOX 1 -->
+
+				<!-- BOX 2 -->
+				<!--
+				<div class="bms-box">
+					<br>
+					<p style="font-size:1.5em; text-align: center;">Voltage: 
+						<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1.5em; width: 80%; height: 14%; margin-left: 0.75em;">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+					</p>
+					<br>
+					<p style="font-size:1.5em; text-align: center;">Current: 
+							<div class="{{errorsBMSHV == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 1.5em; width: 80%; height: 14%;  margin-left: 0.75em; margin-top: 1em;">{{errorsBMSHV == false ? 'All OK' : 'Error'}}</div>
+					</p>
+					
+				</div>
+				-->
+				<!-- END BOX 2-->
+
+				<!-- BOX 3 -->
+				<div class="bms-box">
+						<!-- Line 1 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b2.cT1}} ºC
+									<!--<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b2.cT2}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT3}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT4}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT5}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT6}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->	
+								</span>
+						</span>
+						<div class="bms-line">
+							<p id="bms1line1">
+								
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 1 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 2 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 3 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 4 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 5 </span>
+								
+								<table class="bmsTable">
+									<tr>
+										<td style= "width: 50%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 2 &nbsp; </span></td>
+									</tr>
+									<tr> 
+										<td> Max V1: {{data.e.b2.maxV1}} V</td>	
+										<td> Pack V: {{data.e.b2.v1}} V</td>								
+									</tr>
+									<tr>
+										<td> Min V1: {{data.e.b2.minV1}} V</td>
+										<td> Pack %: {{data.e.b2.p1}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 1: {{data.e.b2.c1}} A</td>
+									</tr>
+								</table>
+								
+								
+							</p>
+						</div>
+						<!-- End Line 1 -->
+						<hr>
+						<!-- Line 2 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b2.c7}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b2.cT8}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT9}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT10}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT11}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b2.cT12}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+							
+						</span>
+						<div class="bms-line">
+							<p id="bms1line2">
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 6 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 7 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 8 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 9 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b2.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b2.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 10 </span>
+								<table class="bmsTable">
+										<tr> 
+											<td> Max V2: {{data.e.b2.maxV2}} V</td>	
+											<td> Pack V: {{data.e.b2.v2}} V</td>								
+										</tr>
+										<tr>
+											<td> Min V2: {{data.e.b2.minV2}} V</td>
+											<td> Pack %: {{data.e.b2.p2}} %</td>
+										</tr>
+										<tr> 
+											<td> Current 2: {{data.e.b2.c2}} A</td>
+										</tr>
+								</table>
+							</p>
+						</div>
+						<!-- End Line 2 -->
+					</div>
+					<!-- END BOX 3 -->
+				
+				<!-- BOX 4 -->
+				<div class="bms-box">
+						<!-- Line 1 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b3.cT1}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b3.cT2}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT3}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT4}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT5}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT6}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+						</span>
+						<div class="bms-line">
+							<p id="bms1line1">
+								
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 1 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 2 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 3 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 4 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 5 </span>
+								
+								<table class="bmsTable">
+									<tr>
+										<td style= "width: 50%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 3 &nbsp; </span></td>
+									</tr>
+									<tr> 
+										<td> Max V1: {{data.e.b3.maxV1}} V</td>	
+										<td> Pack V: {{data.e.b3.v1}} V</td>								
+									</tr>
+									<tr>
+										<td> Min V1: {{data.e.b3.minV1}} V</td>
+										<td> Pack %: {{data.e.b3.p1}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 1: {{data.e.b3.c1}} A</td>
+									</tr>
+								</table>
+								
+								
+							</p>
+						</div>
+						<!-- End Line 1 -->
+						<hr>
+						<!-- Line 2 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b3.cT7}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b3.cT8}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT9}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT10}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT11}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b3.cT12}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+						</span>
+						<div class="bms-line">
+							<p id="bms1line2">
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 6 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 7 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 8 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 9 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b3.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b3.v2 < 75 ? './assets/img/bat-bms-yellow.png' : './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 10 </span>
+								<table class="bmsTable">
+										<tr> 
+											<td> Max V2: {{data.e.b3.maxV2}} V</td>
+											<td> Pack V: {{data.e.b3.v2}} V</td>									
+										</tr>
+										<tr>
+											<td> Min V2: {{data.e.b3.minV2}} V</td>
+											<td> Pack %: {{data.e.b3.p2}} %</td>
+										</tr>
+										<tr> 
+											<td> Current 2: {{data.e.b3.c2}} A</td>
+										</tr>
+								</table>
+							</p>
+						</div>
+						<!-- End Line 2 -->
+					</div>
+					<!-- END BOX 4 -->
+				<!-- BOX 5 -->
+				<!--<div class="bms-box">
+					  <div> <p style="font-size:1.5em; text-align: center; margin-top: 1em;"> Average % Charge: 70% </p></div>
+				</div>
+				-->
+				<!-- BOX 6 -->
+				<div class="bms-box">
+						<!-- Line 1 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b4.cT1}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b4.cT2}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT3}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT4}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT5}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT6}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+						</span>
+						<div class="bms-line">
+							<p id="bms1line1">
+								
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 1 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 2 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 3 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 4 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 5 </span>
+								
+								<table class="bmsTable">
+									<tr>
+										<td style= "width: 50%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 4 &nbsp; </span></td>
+									</tr>
+									<tr> 
+										<td> Max V1: {{data.e.b4.maxV1}} V</td>
+										<td> Pack V: {{data.e.b4.v1}} V</td>									
+									</tr>
+									<tr>
+										<td> Min V1: {{data.e.b4.minV1}} V</td>
+										<td> Pack %: {{data.e.b4.p1}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 1: {{data.e.b4.c1}} A</td>
+									</tr>
+								</table>
+								
+								
+							</p>
+						</div>
+						<!-- End Line 1 -->
+						<hr>
+						<!-- Line 2 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b4.cT7}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b4.cT8}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT9}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT10}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT11}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b4.cT12}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+						</span>
+						<div class="bms-line">
+							<p id="bms1line2">
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 6 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 7 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 8 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 9 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b4.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b4.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 10 </span>
+								<table class="bmsTable">
+										<tr> 
+											<td> Max V2: {{data.e.b4.maxV2}} V</td>	
+											<td> Pack V: {{data.e.b4.v2}} V</td>								
+										</tr>
+										<tr>
+											<td> Min V2: {{data.e.b4.minV2}} V</td>
+											<td> Pack %: {{data.e.b4.p2}} %</td>
+										</tr>
+										<tr> 
+											<td> Current 2: {{data.e.b4.c2}} A</td>
+										</tr>
+								</table>
+							</p>
+						</div>
+						<!-- End Line 2 -->
+					</div>
+					<!-- END BOX 6 -->
+				<!-- BOX 7 -->
+				<div class="bms-box">
+						<!-- Line 1 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 1em"> {{data.e.b5.cT1}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 1em"> {{data.e.b5.cT2}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 1em"> {{data.e.b5.cT3}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 1em"> {{data.e.b5.cT4}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 1em"> {{data.e.b5.cT5}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+	
+								<span style="padding-left: 1em"> {{data.e.b5.cT6}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false">-->
+								</span>
+						</span>
+						<div class="bms-line" onClick="showCells('bms1line1')">
+							<p id="bms1line1">
+								
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 1 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 2 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 3 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 4 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 5 </span>
+								
+								<table class="bmsTable">
+									<tr>
+										<td style= "width: 50%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 5 &nbsp; </span></td>
+									</tr>
+									<tr> 
+										<td> Max V1: {{data.e.b5.maxV1}} V</td>	
+										<td> Pack V: {{data.e.b5.v1}} V</td>								
+									</tr>
+									<tr>
+										<td> Min V1: {{data.e.b5.minV1}} V</td>
+										<td> Pack %: {{data.e.b5.p1}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 1: {{data.e.b5.c1}} A</td>
+									</tr>
+								</table>
+								
+								
+							</p>
+						</div>
+						<!-- End Line 1 -->
+						<hr>
+						<!-- Line 2 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b5.cT7}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b5.cT8}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b5.cT9}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b5.cT10}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b5.cT11}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b5.cT12}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+						</span>
+						<div class="bms-line">
+							<p id="bms1line2">
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 6 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 7 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 8 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 9 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b5.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b5.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 10 </span>
+								<table class="bmsTable">
+										<tr> 
+											<td> Max V2: {{data.e.b5.maxV2}} V</td>		
+											<td> Pack V: {{data.e.b5.v2}} V</td>							
+										</tr>
+										<tr>
+											<td> Min V2: {{data.e.b5.minV2}} V</td>
+											<td> Pack %: {{data.e.b5.p2}} %</td>
+										</tr>
+										<tr> 
+											<td> Current 2: {{data.e.b5.c2}} A</td>
+										</tr>
+								</table>
+							</p>
+						</div>
+						<!-- End Line 2 -->
+					</div>
+					<!-- END BOX 7 -->
+				<!-- BOX 8 -->
+				<!--
+				<div class="bms-box">
+						<button class = "{{data.e.c == 1 ? 'red-fill fill' : 'green-fill fill'}}" style="width:90%; height: 95%;" type="button"  ng-click="contactores()">{{data.e.c == 1 ? 'TURN OFF' : 'TURN ON'}}</button>
+      
+				</div>
+				-->
+				<!-- BOX 9 -->
+				<div class="bms-box">
+						<!-- Line 1 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b6.cT1}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b6.cT2}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT3}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT4}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT5}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT6}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+						</span>
+						<div class="bms-line">
+							<p id="bms1line1">
+								
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 1 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 2 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 3 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 4 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v1 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v1 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 5 </span>
+								
+								<table class="bmsTable">
+									<tr>
+										<td style= "width: 50%;"> <span style="background-color: yellow; color: black;"> &nbsp; Box 6 &nbsp; </span></td>
+									</tr>
+									<tr> 
+										<td> Max V1: {{data.e.b6.maxV1}} V</td>	
+										<td> Pack V: {{data.e.b6.v1}} V</td>								
+									</tr>
+									<tr>
+										<td> Min V1: {{data.e.b6.minV1}} V</td>
+										<td> Pack %: {{data.e.b6.p1}} %</td>
+									</tr>
+									<tr> 
+										<td> Current 1:{{data.e.b6.c1}} A</td>
+									</tr>
+								</table>
+								
+								
+							</p>
+						</div>
+						<!-- End Line 1 -->
+						<hr>
+						<!-- Line 2 -->
+						<span id="bms1line1cells" class="bmsCells">
+								<span style="padding-left: 2em"> {{data.e.b6.cT7}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+								<span style="padding-left: 2em"> {{data.e.b6.cT8}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT9}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT10}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT11}} ºC
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+	
+								<span style="padding-left: 2em"> {{data.e.b6.cT12}} ºC 
+									<!--	<img src="./assets/img/battery-cell.png" draggable="false"> -->
+								</span>
+							
+						</span>
+						<div class="bms-line">
+							<p id="bms1line2">
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 6 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 7 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 8 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 9 </span>
+								<img draggable="false" class="bms-battery" src="{{data.e.b6.v2 < 69 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 > 97 ? './assets/img/bat-bms-red.png' : data.e.b6.v2 < 75 ? './assets/img/bat-bms-yellow.png' :  './assets/img/bat-bms.png'}}"/>
+								<span class="battery-id"> 10 </span>
+								<table class="bmsTable">
+										<tr> 
+											<td> Max V2: {{data.e.b6.maxV2}} V</td>
+											<td> Pack V: {{data.e.b6.v2}} V</td>									
+										</tr>
+										<tr>
+											<td> Min V2: {{data.e.b6.minV2}} V</td>
+											<td> Pack %: {{data.e.b6.p1}} %</td>
+										</tr>
+										<tr> 
+											<td> Current 2: {{data.e.b6.c2}} A</td>
+										</tr>
+								</table>
+							</p>
+						</div>
+						<!-- End Line 2 -->
+					</div>
+					<!-- END BOX 9 -->
+		</div>
+	
+	</body>

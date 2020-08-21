@@ -1,0 +1,42 @@
+{
+    "name": "GUI_H4",
+    "version": "0.9.0",
+    "description": "User graphic interface for Hyperloop Pod Competition",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build-win": "electron-packager . HyperloopUPV --overwrite --asar --platform=win32 --arch=x64  --prune --out=release",
+        "build-mac": "electron-packager . HyperloopUPV --overwrite --asar --platform=darwin --arch=x64  --prune --out=release",
+        "build-linux": "electron-packager . HyperloopUPV --overwrite --asar --platform=linux --arch=x64  --prune --out=release",
+        "zip-win": "bestzip bundle-win.zip release/HyperloopUPV-win32-x64/*",
+        "zip-mac": "bestzip bundle-mac.zip release/HyperloopUPV-darwin-x64/*",
+        "zip-linux": "bestzip bundle-linux.zip release/HyperloopUPV-linux-x64/*",
+        "deploy-win": "npm run build-win && npm run zip-win",
+        "deploy-mac": "npm run build-mac && npm run zip-mac",
+        "deploy-linux": "npm run build-linux && npm run zip-linux",
+        "deploy-full": "npm run deploy-win && npm run deploy-mac && npm run deploy-linux"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/hyperloopupv/gui_h4.git"
+    },
+    "author": "Elmo",
+    "license": "MIT",
+    "devDependencies": {
+        "bestzip": "^2.1.2",
+        "electron": "^4.1.4",
+        "electron-packager": "^13.1.1"
+    },
+    "dependencies": {
+        "amqplib": "^0.5.2",
+        "angular": "^1.6.8",
+        "angular-ui-switch": "^0.1.1",
+        "bcrypt-nodejs": "0.0.3",
+        "bootstrap": "^4.3.1",
+        "jquery": "^3.4.1",
+        "json-tcp-socket": "^1.0.3",
+        "ngx-ui-switch": "^1.6.1",
+        "socket.io": "^2.2.0",
+        "xmlhttprequest": "^1.8.0"
+    }
+}

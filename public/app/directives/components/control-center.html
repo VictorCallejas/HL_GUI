@@ -1,0 +1,48 @@
+<div class="row no-gutter box dark bg">
+    <div class="col-sm-12 full" style="margin-top: 0.5%; padding-left: 2%;">
+        <div style="padding-top: 6%;">
+            <button class="blue-fill fill normal" style="width: -webkit-fill-available;" ng-click="confirm('reset')">Reset</button>
+            <button class="green-fill fill normal" style="width: -webkit-fill-available;" ng-click="confirm('start')">Start</button>
+            <button class="yellow-fill fill normal" style="width: -webkit-fill-available;" ng-click="emergencyShutOff()">EM BUS OFF</button>
+            <button class="red-fill fill" style="width: -webkit-fill-available; font-weight: bold;" ng-click="confirm('em')">Emergency Brake</button>
+        </div>
+
+        <hr style="background-color: white; width: 90%;">
+
+        <div class="text-center" style="margin-top: 2%">
+            <h3>Run parameters</h3>
+        </div>
+
+        <table class="table" style="margin-top: 5%; margin-left: 2%; width: 90%; font-size: 1.2em;">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stripe Count</td>
+                    <td>{{stripecount}}</td>
+                </tr>
+                <tr>
+                    <td>Max Speed</td>
+                    <td>{{maxspeed}}</td>
+                </tr>
+                <tr>
+                    <td>Timeout</td>
+                    <td>{{timeout}}</td>
+                </tr>
+                <tr>
+                    <td>Distance</td>
+                    <td>{{distance}}</td>
+                </tr>
+                <tr>
+                    <td>Direction</td>
+                    <td>{{direction}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="blue-fill fill normal" ng-click="runShow()" style="margin-top: -3%; width: -webkit-fill-available;">Configure</button>
+    </div>
+</div>

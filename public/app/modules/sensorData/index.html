@@ -1,0 +1,694 @@
+
+
+<body>
+		<!--SIDEBAR-->
+	<div id="aside" class="app-aside modal fade folded md nav-expand">
+		<div class="left navside dark dk" layout="column">
+			<div ng-include="'app/template/sidebar.html'"></div>
+		</div>
+	</div>
+	<!--END SIDEBAR-->
+    
+		<div id="tablegroup " class="dark" style="width: 96%;margin-left:3.8%;padding:8px;">
+			
+			<!-- First ROW-->
+			<div class="row m-b" style="color: rgba(255,255,255, 0.8); margin-left: 8px; font-size: 1.1em; margin-top: -1em;">
+				<div class="col-sm-6">
+					<div class="text-center padding">
+						<h4>IMU Data</h4>
+						<hr class="white lowMargin">
+					</div>
+					<div class="row" style="margin-left: 12px;">
+						<div class="col-sm-7 separatorV">
+							<div class="row lowMargin">
+								<div class="col-sm-6 border">
+									<b>IMU Data</b>
+								</div>
+								<div class="col-sm-2">X</div>
+								<div class="col-sm-2">Y</div>
+								<div class="col-sm-2">Z</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Acceleration</div>
+								<div class="col-sm-2">{{data.td.a.x}} m/s² </div>
+								<div class="col-sm-2">{{data.td.a.y}} m/s²</div>
+								<div class="col-sm-2">{{data.td.a.z}} m/s² </div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Speed</div>
+								<div class="col-sm-2">{{data.td.v}} m/s</div>
+								
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Position</div>
+								<div class="col-sm-2">{{data.td.p}} m</div>
+							</div>  
+							<div class="row spacingLines">
+								<div class="col-sm-6">Distance to final: </div>
+								<div class="col-sm-2">{{data.td.d}} m</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Tapes: </div>
+								<div class="col-sm-2">{{data.td.c}}</div>
+							</div>
+						</div>
+						<div class="col-sm-4" style="margin-left: 20px;">
+							<div class="row lowMargin">
+								<div class="col-sm-6 border">
+									<b>Attitude</b>
+								</div>
+								<div class="col-sm-2">Value</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Roll</div>
+								<div class="col-sm-2">{{data.td.at.r}} º</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Pitch</div>
+								<div class="col-sm-2">{{data.td.at.p}} º</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Yaw</div>
+								<div class="col-sm-2">{{data.td.at.y}} º</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="text-center padding">
+						<h4> Brakes & Ambient Data</h4>
+						<hr class="white lowMargin">
+					</div>
+					<div class="row" style="margin-left: 12px;">
+						<div class="col-sm-6">
+							<div class="row lowMargin">
+								<div class="col-sm-8 border">
+									<b>Pneumatics Data</b>
+								</div>
+								<div class="col-sm-2">Value</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">High Pressure Tank 1</div>
+								<div class="col-sm-2">{{data.p.HP1}} bar</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">High Pressure Tank 2</div>
+								<div class="col-sm-2">{{data.p.HP2}} bar</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Low Pressure Tank 1</div>
+								<div class="col-sm-2">{{data.p.LP1}} bar</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Low Pressure Tank 2</div>
+								<div class="col-sm-2">{{data.p.LP2}} bar</div>
+							</div>
+							
+						</div>
+						<div class="col-sm-6">
+								<div class="row spacingLines">
+									<div class="col-sm-8">Temperature Tank 1</div>
+									<div class="col-sm-2"> {{data.p.T1}} ºC</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Temperature Tank 2</div>
+									<div class="col-sm-2">{{data.p.T2}} ºC</div>
+								</div>
+							<div class="row lowMargin">
+								<div class="col-sm-8 border">
+									<b>Ambient Data</b>
+								</div>
+								<!--<div class="col-sm-2">Value</div>-->
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Ambient Pressure</div>
+								<div class="col-sm-2">{{data.o.p}} bar</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Ambient Temperature</div>
+								<div class="col-sm-2">{{data.o.t}} ºC</div>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
+
+			<!-- Second ROW-->
+			<div class="row m-b" style="color: rgba(255,255,255, 0.8); margin-left: 8px; font-size: 1.1em;">
+				<div class="col-sm-6">
+					<div class="text-center padding">
+						<h4>Motors Data</h4>
+						<hr class="white lowMargin">
+					</div>
+					<div class="row" style="margin-left: 12px;">
+						<div class="col-sm-6 separatorV">
+							<div class="row lowMargin">
+								<div class="col-sm-6 border">
+									<b>Left Motors</b>
+								</div>
+								<div class="col-sm-2">C</div>
+								<div class="col-sm-2">V</div>
+								<div class="col-sm-2">T</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Front Top</div>
+								<div class="col-sm-2">{{data.m.fltC}} A</div>
+								<div class="col-sm-2">{{data.m.fltV}} v</div>
+								<div class="col-sm-2">{{data.m.fltT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Front Bottom</div>
+								<div class="col-sm-2">{{data.m.flbC}} A</div>
+								<div class="col-sm-2">{{data.m.flbV}} v</div>
+								<div class="col-sm-2">{{data.m.flbT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Middle Top</div>
+								<div class="col-sm-2">{{data.m.mltC}} A</div>
+								<div class="col-sm-2">{{data.m.mltV}} v</div>
+								<div class="col-sm-2">{{data.m.mltT}} ºC</div>
+							</div> 
+							<div class="row spacingLines">
+								<div class="col-sm-6">Middle Bottom</div>
+								<div class="col-sm-2">{{data.m.mlbC}} A</div>
+								<div class="col-sm-2">{{data.m.mlbV}} v</div>
+								<div class="col-sm-2">{{data.m.mlbT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Rear Top</div>
+								<div class="col-sm-2">{{data.m.rltC}} A</div>
+								<div class="col-sm-2">{{data.m.rltV}} v</div>
+								<div class="col-sm-2">{{data.m.rltT}} ºC</div>
+							</div> 
+							<div class="row spacingLines">
+								<div class="col-sm-6">Rear Bottom</div>
+								<div class="col-sm-2">{{data.m.rlbC}} A</div>
+								<div class="col-sm-2">{{data.m.rlbV}} v</div>
+								<div class="col-sm-2">{{data.m.rlbT}} ºC</div>
+							</div>
+						</div>
+						<div class="col-sm-5" style="margin-left: 20px;">
+							<div class="row lowMargin">
+								<div class="col-sm-6 border">
+									<b>Right Motors</b>
+								</div>
+								<div class="col-sm-2">C</div>
+								<div class="col-sm-2">V</div>
+								<div class="col-sm-2">T</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Front Top</div>
+								<div class="col-sm-2">{{data.m.frtC}} A</div>
+								<div class="col-sm-2">{{data.m.frtV}} v</div>
+								<div class="col-sm-2">{{data.m.frtT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Front Bottom</div>
+								<div class="col-sm-2">{{data.m.frbC}} A</div>
+								<div class="col-sm-2">{{data.m.frbV}} v</div>
+								<div class="col-sm-2">{{data.m.frbT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Middle Top</div>
+								<div class="col-sm-2">{{data.m.mrtC}} A</div>
+								<div class="col-sm-2">{{data.m.mrtV}} v</div>
+								<div class="col-sm-2">{{data.m.mrtT}} ºC</div>
+							</div> 
+							<div class="row spacingLines">
+								<div class="col-sm-6">Middle Bottom</div>
+								<div class="col-sm-2">{{data.m.mrbC}} A</div>
+								<div class="col-sm-2">{{data.m.mrbV}} v</div>
+								<div class="col-sm-2">{{data.m.mrbT}} ºC</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-6">Rear Top</div>
+								<div class="col-sm-2">{{data.m.rrtC}} A</div>
+								<div class="col-sm-2">{{data.m.rrtV}} v</div>
+								<div class="col-sm-2">{{data.m.rrtT}} ºC</div>
+							</div> 
+							<div class="row spacingLines">
+								<div class="col-sm-6">Rear Bottom</div>
+								<div class="col-sm-2">{{data.m.rrbC}} A</div>
+								<div class="col-sm-2">{{data.m.rrbV}} v</div>
+								<div class="col-sm-2">{{data.m.rrbT}} ºC</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="text-center padding">
+						<h4> Avionics BMS</h4>
+						<hr class="white lowMargin">
+					</div>
+					<div class="row" style="margin-left: 12px;">
+						<div class="col-sm-4">
+							<div class="row lowMargin">
+								<div class="col-sm-8 border">
+									<b>Avionics BMS 1</b>
+								</div>
+																
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Cell 1</div>
+								<div class="col-sm-2">{{data.a.a1.c1}}V</div>
+								<div class="col-sm-2">{{data.a.a1.c1s}} %</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Cell 2</div>
+								<div class="col-sm-2">{{data.a.a1.c2}} V</div>
+								<div class="col-sm-2">{{data.a.a1.c2s}} %</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Cell 3</div>
+								<div class="col-sm-2">{{data.a.a1.c3}} V</div>
+								<div class="col-sm-2">{{data.a.a1.c3s}} %</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Cell 4</div>
+								<div class="col-sm-2">{{data.a.a1.c4}} V</div>
+								<div class="col-sm-2">{{data.a.a1.c4s}} %</div>
+							</div>							
+							<div class="row spacingLines">
+								<div class="col-sm-8">Max Voltage</div>
+								<div class="col-sm-2">{{data.a.a1.maxV}} V</div>
+							</div>
+							<div class="row spacingLines">
+								<div class="col-sm-8">Min Voltage</div>
+								<div class="col-sm-2">{{data.a.a1.minV}} V</div>
+							</div>	
+						  
+						</div>
+						<div class="col-sm-3">
+								<div class="row lowMargin">
+									<div class="col-sm-8 border">
+										<b>Avionics BMS 2</b>
+									</div>
+																
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 1</div>
+									<div class="col-sm-2">{{data.a.a2.c1}} V</div>
+									<div class="col-sm-2">{{data.a.a2.c1s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 2</div>
+									<div class="col-sm-2">{{data.a.a2.c2}} V</div>
+									<div class="col-sm-2">{{data.a.a2.c2s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 3</div>
+									<div class="col-sm-2">{{data.a.a2.c3}} V</div>
+									<div class="col-sm-2">{{data.a.a2.c3s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 4</div>
+									<div class="col-sm-2">{{data.a.a2.c4}} V</div>
+									<div class="col-sm-2">{{data.a.a2.c4s}} %</div>
+								</div>							
+								<div class="row spacingLines">
+									<div class="col-sm-8">Max Voltage</div>
+									<div class="col-sm-2">{{data.a.a2.maxV}} V</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Min Voltage</div>
+									<div class="col-sm-2">{{data.a.a2.minV}} V</div>
+								</div>
+							
+						</div>
+						<div class="col-sm-4">
+								<div class="row lowMargin">
+									<div class="col-sm-8 border">
+										<b>Avionics BMS 3</b>
+									</div>
+																
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 1</div>
+									<div class="col-sm-2">{{data.a.a3.c1}} V</div>
+									<div class="col-sm-2">{{data.a.a3.c1s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 2</div>
+									<div class="col-sm-2">{{data.a.a3.c2}} V</div>
+									<div class="col-sm-2">{{data.a.a3.c2s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 3</div>
+									<div class="col-sm-2">{{data.a.a3.c3}} V</div>
+									<div class="col-sm-2">{{data.a.a3.c3s}} %</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Cell 4</div>
+									<div class="col-sm-2">{{data.a.a3.c4}} V</div>
+									<div class="col-sm-2">{{data.a.a3.c4s}} %</div>
+								</div>							
+								<div class="row spacingLines">
+									<div class="col-sm-8">Max Voltage</div>
+									<div class="col-sm-2">{{data.a.a3.maxV}} V</div>
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-8">Min Voltage</div>
+									<div class="col-sm-2">{{data.a.a3.minV}} V</div>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Third ROW-->
+			<div class="row m-b" style="color: rgba(255,255,255, 0.8); margin-left: 100px;font-size: 1.1em;">
+					<div class="col-sm-11">
+						<div class="text-center padding">
+							<h4>BMS Motors</h4>
+							<hr class="white lowMargin">
+						</div>
+						<div class="row" style="margin-left: 12px;">
+							<!--BOX 1-->
+							<div class="col-sm-4 separatorV">								
+								<div class="row lowMargin">
+									<div class="col-sm-3 border">
+										<b>Box 1</b>
+									</div>
+									<div class="col-sm-2">C</div>
+									<div class="col-sm-2">V</div>
+									<div class="col-sm-2">T</div>
+									<div class="col-sm-2">%</div>
+									<!--<div class="col-sm-1">S</div>-->
+									
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-3">Pack 1</div>
+									<div class="col-sm-2">{{data.e.b1.c1}}A</div>
+									<div class="col-sm-2">{{data.e.b1.v1}} v</div>
+									<div class="col-sm-2">{{data.e.b1.cT1}} ºC</div>
+									<div class="col-sm-2">{{data.e.b1.p1}} %</div>
+									<!--<div class="col-sm-1">{{data.e.b1.p1}}</div>-->
+								</div>
+								<div class="row spacingLines">
+									<div class="col-sm-3">Pack 2</div>
+									<div class="col-sm-2">{{data.e.b1.c2}} A</div>
+									<div class="col-sm-2">{{data.e.b1.v2}} v</div>
+									<div class="col-sm-2">{{data.e.b1.cT6}} ºC</div>
+									<div class="col-sm-2">{{data.e.b1.p2}} %</div>
+									<!--<div class="col-sm-1">{{data.e.b1.p2}}</div>-->
+								</div>
+								
+							</div>
+							<!--BOX 2-->
+							<div class="col-sm-4 separatorV">								
+									<div class="row lowMargin">
+										<div class="col-sm-3 border">
+											<b>Box 2</b>
+										</div>
+										<div class="col-sm-2">C</div>
+										<div class="col-sm-2">V</div>
+										<div class="col-sm-2">T</div>
+										<div class="col-sm-2">%</div>
+										<!--<div class="col-sm-1">S</div>-->
+										
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 1</div>
+										<div class="col-sm-2">{{data.e.b1.c1}} A</div>
+										<div class="col-sm-2">{{data.e.b2.v1}} v</div>
+										<div class="col-sm-2">{{data.e.b2.cT1}} ºC</div>
+										<div class="col-sm-2">{{data.e.b2.p1}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b2.p1}}</div>-->
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 2</div>
+										<div class="col-sm-2">{{data.e.b2.c2}} A</div>
+										<div class="col-sm-2">{{data.e.b2.v2}} v</div>
+										<div class="col-sm-2">{{data.e.b2.cT6}} ºC</div>
+										<div class="col-sm-2">{{data.e.b2.p2}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b2.p2}}</div>-->
+									</div>
+									
+							</div>
+							<!--BOX 3-->
+							<div class="col-sm-4 separatorV">								
+									<div class="row lowMargin">
+										<div class="col-sm-3 border">
+											<b>Box 3</b>
+										</div>
+										<div class="col-sm-2">C</div>
+										<div class="col-sm-2">V</div>
+										<div class="col-sm-2">T</div>
+										<div class="col-sm-2">%</div>
+										<!--<div class="col-sm-1">S</div>-->
+										
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 1</div>
+										<div class="col-sm-2">{{data.e.b3.c1}} A</div>
+										<div class="col-sm-2">{{data.e.b3.v1}} v</div>
+										<div class="col-sm-2">{{data.e.b3.cT1}} ºC</div>
+										<div class="col-sm-2">{{data.e.b3.p1}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b3.p1}}</div>-->
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 2</div>
+										<div class="col-sm-2">{{data.e.b3.c2}} A</div>
+										<div class="col-sm-2">{{data.e.b3.v2}} v</div>
+										<div class="col-sm-2">{{data.e.b3.cT6}} ºC</div>
+										<div class="col-sm-2">{{data.e.b3.p2}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b3.p2}}</div>-->
+									</div>
+									
+							</div>
+							
+							<!--BOX 3-->
+							<div class="col-sm-4 separatorV">		
+								<br>						
+									<div class="row lowMargin">
+										<div class="col-sm-3 border">
+											<b>Box 4</b>
+										</div>
+										<div class="col-sm-2">C</div>
+										<div class="col-sm-2">V</div>
+										<div class="col-sm-2">T</div>
+										<div class="col-sm-2">%</div>
+										<!--<div class="col-sm-1">S</div>-->
+										
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 1</div>
+										<div class="col-sm-2">{{data.e.b4.c1}} A</div>
+										<div class="col-sm-2">{{data.e.b4.v1}} v</div>
+										<div class="col-sm-2">{{data.e.b4.cT1}} ºC</div>
+										<div class="col-sm-2">{{data.e.b4.p1}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b4.p1}}</div>-->
+									</div>
+									<div class="row spacingLines">
+										<div class="col-sm-3">Pack 2</div>
+										<div class="col-sm-2">{{data.e.b4.c2}} A</div>
+										<div class="col-sm-2">{{data.e.b4.v2}} v</div>
+										<div class="col-sm-2">{{data.e.b4.cT6}} ºC</div>
+										<div class="col-sm-2">{{data.e.b4.p2}} %</div>
+										<!--<div class="col-sm-1">{{data.e.b4.p2}}</div>-->
+									</div>
+									
+								</div>
+								<!--BOX 5-->
+								<div class="col-sm-4 separatorV">	
+									<br>							
+										<div class="row lowMargin">
+											<div class="col-sm-3 border">
+												<b>Box 5</b>
+											</div>
+											<div class="col-sm-2">C</div>
+											<div class="col-sm-2">V</div>
+											<div class="col-sm-2">T</div>
+											<div class="col-sm-2">%</div>
+											<!--<div class="col-sm-1">S</div>-->
+											
+										</div>
+										<div class="row spacingLines">
+											<div class="col-sm-3">Pack 1</div>
+											<div class="col-sm-2">{{data.e.b5.c1}} A</div>
+											<div class="col-sm-2">{{data.e.b5.v1}} v</div>
+											<div class="col-sm-2">{{data.e.b5.cT1}} ºC</div>
+											<div class="col-sm-2">{{data.e.b5.p1}} %</div>
+											<!--<div class="col-sm-1">{{data.e.b5.p1}}</div>-->
+										</div>
+										<div class="row spacingLines">
+											<div class="col-sm-3">Pack 2</div>
+											<div class="col-sm-2">{{data.e.b5.c2}} A</div>
+											<div class="col-sm-2">{{data.e.b5.v2}} v</div>
+											<div class="col-sm-2">{{data.e.b5.cT2}} ºC</div>
+											<div class="col-sm-2">{{data.e.b5.p2}} %</div>
+											<!--<div class="col-sm-1">{{data.e.b5.p2}}</div>-->
+										</div>
+										
+								</div>
+								<!--BOX 6-->
+								<div class="col-sm-4 separatorV">	
+									<br>						
+										<div class="row lowMargin">
+											<div class="col-sm-3 border">
+												<b>Box 6</b>
+											</div>
+											<div class="col-sm-2">C</div>
+											<div class="col-sm-2">V</div>
+											<div class="col-sm-2">T</div>
+											<div class="col-sm-2">%</div>
+											<!--<div class="col-sm-1">S</div>-->
+											
+										</div>
+										<div class="row spacingLines">
+											<div class="col-sm-3">Pack 1</div>
+											<div class="col-sm-2">{{data.e.b6.c1}} A</div>
+											<div class="col-sm-2">{{data.e.b6.v1}} v</div>
+											<div class="col-sm-2">{{data.e.b6.cT1}} ºC</div>
+											<div class="col-sm-2">{{data.e.b6.p1}} %</div>
+											<!--<div class="col-sm-1">{{data.e.b6.p1}}</div>-->
+										</div>
+										<div class="row spacingLines">
+											<div class="col-sm-3">Pack 2</div>
+											<div class="col-sm-2">{{data.e.b6.c2}} A</div>
+											<div class="col-sm-2">{{data.e.b6.v2}} v</div>
+											<div class="col-sm-2">{{data.e.b6.cT2}} ºC</div>
+											<div class="col-sm-2">{{data.e.b6.p2}} %</div>
+											<!--<div class="col-sm-1">{{data.e.b6.p2}}</div>-->
+										</div>
+										
+								</div>
+
+								
+										
+								</div>
+						
+						
+
+
+
+
+
+
+
+
+<!-- Third ROW-->
+<div class="row m-b" style="color: rgba(255,255,255, 0.8); margin-left: 100px;font-size: 1.1em;">
+	<div class="col-sm-12">
+		<div class="text-center padding">
+			<h4>Boards Status</h4>
+			<hr class="white lowMargin">
+		</div>
+<div class="row">
+
+
+			<!--BOX 1-->
+			<div class="col-sm-4 separatorV">								
+				<div class="row lowMargin">
+					<div class="col-sm-4 border">
+						<b>HIGH VOLTAGE</b>
+					</div>
+					<div class="col-sm-2">STATUS</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 1</div>
+					<div class="col-sm-2 {{boards[0] ? 'b-active' : 'b-notActive'}}">{{boards[0] == true? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 2</div>
+					<div class="col-sm-2 {{boards[1] ? 'b-active' : 'b-notActive'}}">{{boards[1] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 3</div>
+					<div class="col-sm-2 {{boards[2] ? 'b-active' : 'b-notActive'}}">{{boards[2] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 4</div>
+					<div class="col-sm-2 {{boards[3] ? 'b-active' : 'b-notActive'}}">{{boards[3] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 5</div>
+					<div class="col-sm-2 {{boards[4] ? 'b-active' : 'b-notActive'}}">{{boards[4] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 6</div>
+					<div class="col-sm-2 {{boards[5] ? 'b-active' : 'b-notActive'}}">{{boards[5] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>			
+			</div>
+
+	
+
+			<!--BOX 1-->
+			<div class="col-sm-4 separatorV">								
+				<div class="row lowMargin">
+					<div class="col-sm-4 border">
+						<b>HIGH VOLTAGE</b>
+					</div>
+					<div class="col-sm-2">STATUS</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 7</div>
+					<div class="col-sm-2 {{boards[6] ? 'b-active' : 'b-notActive'}}">{{boards[6] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 8</div>
+					<div class="col-sm-2 {{boards[7] ? 'b-active' : 'b-notActive'}}">{{boards[7] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 9</div>
+					<div class="col-sm-2 {{boards[8] ? 'b-active' : 'b-notActive'}}">{{boards[8] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 10</div>
+					<div class="col-sm-2 {{boards[9] ? 'b-active' : 'b-notActive'}}">{{boards[9] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 11</div>
+					<div class="col-sm-2 {{boards[10] ? 'b-active' : 'b-notActive'}}">{{boards[10] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS HV 12</div>
+					<div class="col-sm-2 {{boards[11] ? 'b-active' : 'b-notActive'}}">{{boards[11] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>			
+			</div>
+
+		
+
+		
+
+
+		
+			<!--BOX 1-->
+			<div class="col-sm-4 separatorV">								
+				<div class="row lowMargin">
+					<div class="col-sm-4 border">
+						<b>AVIONICS</b>
+					</div>
+					<div class="col-sm-2">STATUS</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS LV 1</div>
+					<div class="col-sm-2 {{boards[12] ? 'b-active' : 'b-notActive'}}">{{boards[12] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS LV 2</div>
+					<div class="col-sm-2 {{boards[13] ? 'b-active' : 'b-notActive'}}">{{boards[13] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>
+				<div class="row spacingLines">
+					<div class="col-sm-3">BMS LV 3</div>
+					<div class="col-sm-2 {{boards[14] ? 'b-active' : 'b-notActive'}}">{{boards[14] == true  ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>	
+				<div class="row spacingLines">
+					<div class="col-sm-3">NAVIGATION</div>
+					<div class="col-sm-2 {{boards[15] ? 'b-active' : 'b-notActive'}}">{{boards[15] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>	
+				<div class="row spacingLines">
+					<div class="col-sm-3">BRAKES</div>
+					<div class="col-sm-2 {{boards[16] ? 'b-active' : 'b-notActive'}}">{{boards[16] == true ? 'ACTIVE' : 'DISCONNECTED' }}</div>
+				</div>				
+			</div>
+
+		</div>
+		
+
+
+	</div>
+
+</body>

@@ -1,0 +1,29 @@
+<div class="row no-gutter box dark bg">
+    <div class="col-sm-12" style="padding-top: 6%;">
+        <just-gage id="Speed" min=0 max=500 value=data.tripData.imuData.velocity.x title="Speed" options="{
+                label: 'Km/h',
+                gaugeWidthScale: 0.3,
+                decimals: 2,
+                humanFriendlyDecimal: true,
+                counter: true,
+                noGradient: true,
+                valueFontColor:'#fff',
+                relativeGaugeSize: true
+    
+            }"></just-gage>
+    </div>
+    <div class="col-sm-12" style="padding-top: 6%;">
+        <just-gage id="Acceleration" min=-6 max=6 value=data.tripData.imuData.acceleration.x title="Acceleration" options="{
+                label: 'G',
+                gaugeWidthScale: 0.3,
+                decimals: 2,
+                humanFriendlyDecimal: true,
+                counter: true,
+                noGradient: true,
+                valueFontColor:'#fff',
+                relativeGaugeSize: true,
+                levelColors: ['#ce9b1b']
+    
+            }"></just-gage>
+    </div>
+</div>

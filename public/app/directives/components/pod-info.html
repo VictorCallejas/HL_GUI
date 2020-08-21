@@ -1,0 +1,124 @@
+<div class="row no-gutter box dark bg" style="margin-bottom: 0; height: 47vh;">
+    <div class="col-sm-12">
+        <div class="box-body padding-none" style="margin-right: 5vh;">
+            <div id="sensorValues">
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="{{ connected ? 'green-text' : 'red-text'}} pulsate">{{connected ? 'ACTIVE' : 'NONE'}}</div>
+                    <label>UpLink</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="red-text">{{data.stateMachine.status}}:{{getNameStatus(data.stateMachine.status)}}</div>
+                    <label>Pod State</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="red-text">{{data.stateMachine.superState}}:{{getNameSuperStatus(data.stateMachine.superState)}}</div>
+                    <label>Pod SubState</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div class="blue-text">{{data.tripData.imuData.position.x}}</div>
+                    <label>Distance(m)</label>
+                </div>
+                <div class="sensor-values" style="width: 20vh;">
+                    <div id="countdown" class="green-text">
+                        {{runTime}}
+                    </div>
+                    <label>Timer</label>
+                    <button class="btn btn-sm" ng-click="resetTimer()" style="position: absolute; top: 24%; margin-left: 15%;">Reset</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 2%; margin-left: 2%; font-size: 1.2em;">
+                <div class="row" style="width: 100%; margin-left: 0%">
+                    <div class="col-sm-4">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Pressure</th>
+                                    <th>Psi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ambient Pressure</td>
+                                    <td class="">{{data.sensorData.pressure.amb_pres}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ambient Temperature</td>
+                                    <td class="">{{data.sensorData.other.amb_temp}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-4">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>System</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Motor Front</td>
+                                    <td class="{{data.sensorData.motors.front_motor_status == 1 ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{data.sensorData.motors.front_motor_status == 1 ? 'ON' : 'OFF'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Motor Rear</td>
+                                    <td class="{{data.sensorData.motors.rear_motor_status == 1 ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{data.sensorData.motors.rear_motor_status == 1 ? 'ON' : 'OFF'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-4">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>System</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pneumatic Brakes</td>
+                                    <td class="{{data.sensorData.pneumatic.actuator2 && data.sensorData.pneumatic.actuator3 ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{data.sensorData.pneumatic.actuator2 ? 'ON' : 'OFF'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Electric Brakes</td>
+                                    <td class="{{data.sensorData.actuators.brakes_3and4Set == 1 ? 'green pulsate text-center' : 'pulsate red text-center'}}">{{data.sensorData.electric_brakes.position ? 'ON' : 'OFF'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-6">
+                    <highchart id='chart1' config='realTimeConfig' style='display: inline-block; position: absolute;'></highchart>
+                </div>
+                <div class="col-sm-6">
+                    <highchart id='chart2' config='BatVoltageConfig' style='display: inline-block; position: absolute; margin-top: 25%;'></highchart>
+                </div>
+                <div>
+                    <div id="dot" class="pulse yellow" style="position: absolute; top: 455px; left: 40px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.toggle').click(function (e) {
+        var toggle = this;
+
+        e.preventDefault();
+
+        $(toggle).toggleClass('toggle--on')
+            .toggleClass('toggle--off')
+            .addClass('toggle--moving');
+
+        setTimeout(function () {
+            $(toggle).removeClass('toggle--moving');
+        }, 200)
+    });
+</script>

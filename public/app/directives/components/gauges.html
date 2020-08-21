@@ -1,0 +1,53 @@
+<div class="row no-gutter box dark bg">
+    <just-gage id="motor1" min=0 max=6000 value=data.tripData.motorData.front_motor_encoder_speed title="Front Motor" options="{
+                label: 'rpm',
+                gaugeWidthScale: 0.25,
+                decimals: 2,
+                humanFriendlyDecimal: true,
+                counter: true,
+                noGradient: true,
+                valueFontColor:'#fff',
+                relativeGaugeSize: true
+    
+            }"></just-gage>
+    <just-gage id="motor2" min=0 max=6000 value=data.tripData.motorData.rear_motor_encoder_speed title="Rear Motor" options="{
+                label: 'rpm',
+                gaugeWidthScale: 0.25,
+                decimals: 2,
+                humanFriendlyDecimal: true,
+                counter: true,
+                noGradient: true,
+                valueFontColor:'#fff',
+                relativeGaugeSize: true
+    
+            }"></just-gage>
+    <hr style="background-color: white; width: 80%; margin-top: -2%;">
+    <table class="table" style=" font-size: 1.2em;">
+        <thead>
+            <tr>
+                <th>Pressure</th>
+                <th>Psi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Circuit Low Pressure 1</td>
+                <td>{{data.sensorData.pressure.pneumatic_circuit_pressure1}}</td>
+            </tr>
+            <tr>
+                <td>Circuit Low Pressure 2</td>
+                <td>{{data.sensorData.pressure.pneumatic_circuit_pressure2}}</td>
+            </tr>
+            <tr>
+                <td>Circuit Median Pressure</td>
+                <td>{{data.sensorData.pressure.pneumatic_circuit_pressure3}}</td>
+            </tr>
+            <tr>
+                <td>Circuit High Pressure</td>
+                <td>{{data.sensorData.pressure.pneumatic_circuit_pressure4}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="blue-fill fill normal" style="margin-top: -4%; width: -webkit-fill-available; font-size: 1.2em;" ng-click="send('purge')">Purge</button>
+    <button class="red-fill fill normal" style="font-size: 1.2em; width: -webkit-fill-available;" ng-click="send('manifold')">Manifold {{data.sensorData.pneumatic.actuator1 == 1 ? 'ON' : 'OFF'}}</button>
+</div>

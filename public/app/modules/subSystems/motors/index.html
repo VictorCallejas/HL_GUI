@@ -1,0 +1,448 @@
+<head>
+
+  <style>
+    .motors-title {
+      color: white;
+      padding-left: 3em;
+      font-size: 3em;
+    }
+
+    .motors-container {
+      display: grid;
+      padding-left: 8em;
+      /* padding-right: 6em;*/
+      grid-gap: 1em;      
+      grid-template-columns: 40% 40% 18%;
+      color: white;     
+
+    }  
+
+    .motor-graph {
+      width: 27%;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+
+    .motors-subpart {
+      border-style: solid;
+      border-color: yellow;
+      
+    }
+
+    .motors-info {
+      font-size: 1.5em;
+      margin-top: 2em;
+      margin-left: 2em;
+    }
+
+  </style>
+
+</head>
+
+<body class="smart pace-done dark">
+    <div id="overlay">
+        <div ng-include="'app/template/configTestMotors.html'"></div>
+    </div>
+
+  <!--SIDEBAR-->
+  <div id="aside" class="app-aside modal fade folded md nav-expand">
+    <div class="left navside dark dk" layout="column">
+      <div ng-include="'app/template/sidebar.html'"></div>
+    </div>
+  </div>
+  <!--END SIDEBAR-->
+  <Check></Check>
+  <div ng-include="'app/directives/components/notice.html'"></div>
+
+
+  <div class = "title">
+      Motors System			
+  </div>
+
+
+
+
+  <div class="motors-container"> 
+
+    <!-- Column 1 -->
+    <div>    
+      <div class="motors-subpart">
+        <!-- MOTOR 1: front left top-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor1" min=0 max=41000 value=data.m.fltRPM title="Front Left Top" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              
+              Voltage: {{data.m.fltV}} V
+              <br>
+              Current: {{data.m.fltC}} A
+              <br>
+              Temperature: {{data.m.fltT}} ºC    
+
+            </div>
+            <label class="{{err_flt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_flt == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+
+        <!-- MOTOR 2 front left bottom-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor2" min=0 max=41000 value=data.m.flbRPM title="Front Left Bottom" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.flbV}} V
+              <br>
+              Current: {{data.m.flbC}} A
+              <br>
+              Temperature: {{data.m.flbT}} ºC       
+            </div>
+            <label class="{{err_flb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_flb == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+    </div>
+    <div class="motors-subpart">
+      <!-- MOTOR 3 middle left top-->
+      <div class="flex-container">
+          <div class="motor-graph">
+              <just-gage id="motor3" min=0 max=41000 value=data.m.mltRPM title="Middle Left Top" options="{
+                  label: 'rpm',
+                  gaugeWidthScale: 0.25,
+                  decimals: 2,
+                  humanFriendlyDecimal: true,
+                  counter: true,
+                  noGradient: true,
+                  valueFontColor:'#fff',
+                  relativeGaugeSize: true      
+              }">
+            </just-gage>
+          </div>
+          <div class="motors-info">
+            Voltage: {{data.m.mltV}} V
+            <br>
+            Current: {{data.m.mltC}} A
+            <br>
+            Temperature: {{data.m.mltT}} ºC
+          </div>
+          <label class="{{err_mlt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_mlt == false ? ' All OK ' : 'Error'}}</label> 
+      </div>
+
+      <!-- MOTOR 4 middle left bottom -->
+      <div class="flex-container">
+          <div class="motor-graph">
+              <just-gage id="motor4" min=0 max=41000 value=data.m.mlbRPM title="Middle Left Bottom" options="{
+                  label: 'rpm',
+                  gaugeWidthScale: 0.25,
+                  decimals: 2,
+                  humanFriendlyDecimal: true,
+                  counter: true,
+                  noGradient: true,
+                  valueFontColor:'#fff',
+                  relativeGaugeSize: true      
+              }">
+            </just-gage>
+          </div>
+          <div class="motors-info">
+            Voltage: {{data.m.mlbV}} V
+            <br>
+            Current: {{data.m.mlbC}} A
+            <br>
+            Temperature: {{data.m.mlbT}} ºC      
+          </div>
+          <label class="{{err_mlb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_mlb == false ? ' All OK ' : 'Error'}}</label> 
+      </div>
+    </div>
+
+    <div class="motors-subpart">
+        <!-- MOTOR 5 rear left top-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor5" min=0 max=41000 value=data.m.rltRPM title="Rear Left Top" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.rltV}} V
+              <br>
+              Current: {{data.m.rltC}} A
+              <br>
+              Temperature: {{data.m.rltT}} ºC        
+            </div>
+            <label class="{{err_rlt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_rlt == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+
+        <!-- MOTOR 6 rear left bottom-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor6" min=0 max=41000 value=data.m.rlbRPM title="Rear Left Bottom" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.rlbV}} V
+              <br>
+              Current: {{data.m.rlbC}} A
+              <br>
+              Temperature: {{data.m.rltT}} ºC  
+            </div>
+            <label class="{{err_rlb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_rlb == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div>
+
+      <div class="motors-subpart">
+          <!-- MOTOR 7 front right top-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor7" min=0 max=41000 value=data.m.frtRPM title="Front Right Top" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.frtV}} V
+              <br>
+              Current: {{data.m.frtC}} A
+              <br>
+              Temperature: {{data.m.frtT}} ºC            
+            </div>
+            <label class="{{err_frt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_frt == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+
+        <!-- MOTOR 8 front right bottom-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor8" min=0 max=41000 value=data.m.frbRPM title="Front Right Bottom" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.frbV}} V
+              <br>
+              Current: {{data.m.frbC}} A
+              <br>
+              Temperature: {{data.m.frtT}} ºC          
+            </div>
+            <label class="{{err_frb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_frb == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+      </div>
+
+      <div class="motors-subpart">
+        <!-- MOTOR 9 middle right top-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor9" min=0 max=41000 value=data.m.mrtRPM title="Middle Right Top" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.mrtV}} V
+              <br>
+              Current: {{data.m.mrtC}} A
+              <br>
+              Temperature:  {{data.m.mrtT}} ºC          
+            </div>
+            <label class="{{err_mrt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_mrt == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+
+        <!-- MOTOR 10 middle right bottom-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor10" min=0 max=41000 value=data.m.mrbRPM title="Middle Right Bottom" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.mrbV}} V
+              <br>
+              Current: {{data.m.mrbC}} A
+              <br>
+              Temperature: {{data.m.mrbT}} ºC            
+            </div>
+            <label class="{{err_mrb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_mrb == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+      </div>
+
+
+      <div class="motors-subpart">
+        <!-- MOTOR 11 rear back top-->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor11" min=0 max=41000 value=data.m.rrtRPM title="Rear Right Top" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.rrtV}} V
+              <br>
+              Current: {{data.m.rrtC}} A
+              <br>
+              Temperature: {{data.m.rrtT}} ºC    
+            </div>
+            <label class="{{err_rrt == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_rrt == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+
+        <!-- MOTOR 12 rear right bottom -->
+        <div class="flex-container">
+            <div class="motor-graph">
+                <just-gage id="motor12" min=0 max=41000 value=data.m.rrbRPM title="Rear Right Bottom" options="{
+                    label: 'rpm',
+                    gaugeWidthScale: 0.25,
+                    decimals: 2,
+                    humanFriendlyDecimal: true,
+                    counter: true,
+                    noGradient: true,
+                    valueFontColor:'#fff',
+                    relativeGaugeSize: true      
+                }">
+              </just-gage>
+            </div>
+            <div class="motors-info">
+              Voltage: {{data.m.rrbV}} V
+              <br>
+              Current: {{data.m.rrbC}} A
+              <br>
+              Temperature: {{data.m.rrbT}} ºC            
+            </div>
+            <label class="{{err_rrb == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; height: 20%; margin: auto;">{{err_rrb == false ? ' All OK ' : 'Error'}}</label> 
+        </div>
+      </div>
+
+
+    </div>
+    
+    <!-- Column 3 -->
+    <div>
+      <button class = "blue-fill fill normal" style="width:95%; height: 15%;" type="button"  ng-click="startMotorTest()">Start Motor Test</button> 
+      <button class = "blue-fill fill normal" style="width:95%; height: 15%;" type="button"  ng-click="stopMotorTest()">Stop Motors</button> 
+         
+
+
+
+      <div class="dash-params">
+            
+          <div class="text-center" style="margin-top: 70%">
+              <h3>Motor Test</h3>
+          </div>
+
+          <hr style="background-color: white; width: 90%;">
+  
+          <table class="table" style="margin-top: 5%; margin: auto;margin-bottom: 25px; width: 90%; font-size: 1.2em;">
+              <thead>
+                  <tr>
+                      <th>Parameter</th>
+                      <th>Value</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>Motor Id</td>
+                    <td>{{motorId}}</td>
+                  </tr>          
+                  <tr>
+                    <td>Ramp Time</td>
+                    <td>{{rampTime}}</td>
+                  </tr>
+                  <tr>
+                    <td>Speed Target</td>
+                    <td>{{speedTarget}}</td>
+                  </tr>
+                  <tr>
+                    <td>Timeout</td>
+                    <td>{{testTimeout}}</td>
+                  </tr>
+              </tbody>
+          </table>
+          <div style="display:inline-flex;width:100%">
+              <button class="blue-fill fill normal" ng-click="showMotorsConfig()" style="margin-top: -3%; width: -webkit-fill-available;">Configure</button>  
+          </div>   
+  </div>
+
+
+
+      
+    </div>
+
+  </div>
+ 
+ 
+
+</body>

@@ -1,0 +1,31 @@
+{
+  "name": "gui_h4",
+  "version": "0.9.1",
+  "dependencies": {
+    "angular": "1.6.6",
+    "angular-confirm": "angular1-confirm#^1.1.0",
+    "angular-gridster": "0.13.15",
+    "angular-justgage": "1.0.1",
+    "angular-route": "1.6.6",
+    "angular-socket-io": "0.7.0",
+    "angular-ui-switch": "^0.1.1",
+    "angularjs-slider": "^6.5.0",
+    "bootstrap": "3.3.7",
+    "highcharts": "5.0.14",
+    "highcharts-ng": "latest",
+    "javascript-detect-element-resize": "0.5.3",
+    "jquery": "2.2.4",
+    "justgage-toorshia": "1.2.2",
+    "lightbox2": "2.9.0",
+    "raphael": "2.1.4",
+    "smooth-scroll": "1.4.0",
+    "socket.io": "2.0.4",
+    "socket.io-client": "2.0.4",
+    "angular-sanitize": "^1.7.1"
+  },
+  "private": true,
+  "resolutions": {
+    "angular": "^1.4.7",
+    "justgage-toorshia": "1.2.2"
+  }
+}

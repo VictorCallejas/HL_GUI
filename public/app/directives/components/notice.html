@@ -1,0 +1,13 @@
+<div class="{{showModal ? 'warning-notice' : 'hidden'}}">
+    <div class="row m-b" >
+        <div class="col-sm-12">
+            <div class="box" style="background-color:rgba(255,255,255,0) !important;">
+                <div class="box-header">
+                    <i class="fa fa-times" style="position: absolute; left: 90%; margin-top: -10px;" ng-click="closeModal()"></i>
+                    <h3 class="pulsate" style="position: absolute; left: 5%; margin-top: -10px;">Warning&nbsp;<i class="fa fa-warning"></i></h3>
+                    <p style="font-size: 1.2em; position: absolute; left: 5%; margin-top: 10px;" ng-bind-html="warningText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

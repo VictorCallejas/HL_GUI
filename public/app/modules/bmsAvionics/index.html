@@ -1,0 +1,217 @@
+<head>
+    <style>
+        .fa-battery-full {
+            font-size: 10em !important;
+        }
+
+       
+    </style>
+</head>
+
+<body>        
+	<!--SIDEBAR-->
+	<div id="aside" class="app-aside modal fade folded md nav-expand">
+		<div class="left navside dark dk" layout="column">
+			<div ng-include="'app/template/sidebar.html'"></div>
+		</div>
+	</div>
+	<Check></Check>
+	<div ng-include="'app/directives/components/notice.html'"></div>
+    <!--END SIDEBAR-->
+
+    <div class = "title"> Battery Avionics Management System  </div>
+    <div>
+            <hr style="width: 100%; height:1px;border-top:1px solid yellow" />
+    </div>
+
+    <table class="bmsAvionics-data" style="width: 90%;height:100%; margin-top:80px; margin-left: 130px;">
+
+        <tr>            
+            <th style="text-align: center; color: white; font-size: 3em;">Avionics BMS 1</th>
+            <th style="text-align: center; color: white; font-size: 3em;">Avionics BMS 2</th> 
+            <th style="text-align: center; color: white; font-size: 3em;">Avionics BMS 3</th>   
+            <br>           
+        </tr>
+        
+        <tr>
+            <th>
+                <br>
+                <!--Battery 1 temperature display-->
+                <div style="text-align: center;">                    
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a1 == true ? 'color:red;' : data.a.a1.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i> 
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a1.t1}} ºC </span>
+                    &emsp;&emsp;       
+                    <i class="fa fa-battery-full" aria-hidden="true" style ="{{err_a1 == true ? 'color:red;' : data.a.a1.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a1.t1}} ºC </span>
+                    <br>
+                    <i class="fa fa-battery-full" aria-hidden="true" style ="{{err_a1 == true ? 'color:red;' : data.a.a1.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i> 
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a1.t2}} ºC </span>
+                    &emsp;&emsp;       
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a1 == true ? 'color:red;' : data.a.a1.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a1.t2}} ºC </span>
+                </div>
+            </th>
+            <th>
+                <br>
+                <!--Battery 2 temperature display-->
+                <div style="text-align: center;">
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a2 == true ? 'color:red;' : data.a.a2.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a2.t1}} ºC </span>
+                    &emsp;&emsp;
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a2 == true ? 'color:red;' : data.a.a2.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a2.t1}} ºC </span>
+                    <br>
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a2 == true ? 'color:red;' : data.a.a2.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a2.t2}} ºC </span>
+                    &emsp;&emsp;    
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a2 == true ? 'color:red;' : data.a.a2.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a2.t2}} ºC </span>
+                </div>
+            </th> 
+            <th>
+                <br>
+                <!--Battery 3 temperature display-->
+                <div style="text-align: center;">                    
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a3 == true ? 'color:red;' : data.a.a1.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i> 
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a3.t1}} ºC </span>
+                    &emsp;&emsp;       
+                    <i class="fa fa-battery-full" aria-hidden="true" style ="{{err_a3 == true ? 'color:red;' : data.a.a1.t1 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a3.t1}} ºC </span>
+                    <br>
+                    <i class="fa fa-battery-full" aria-hidden="true" style ="{{err_a3 == true ? 'color:red;' : data.a.a1.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i> 
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a3.t2}} ºC </span>
+                    &emsp;&emsp;       
+                    <i class="fa fa-battery-full" aria-hidden="true" style="{{err_a3 == true ? 'color:red;' : data.a.a1.t2 > 50 ? 'color:yellow;' : 'color:yellowgreen;'}}"></i>
+                    <span style="color:white; font-size: 1.5em;"> {{data.a.a3.t2}} ºC </span>
+                </div>
+            </th>            
+        </tr>
+        <tr>
+            <th>
+                <br>
+                 <!-- bms avionics 1-->
+                <div style="color:white; text-align: center;">
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 1: {{data.a.a1.c1}} V</span>  &emsp;&emsp;&emsp;      
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 2: {{data.a.a1.c2}} V</span>
+                        <br>
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 3: {{data.a.a1.c3}} V</span>   &emsp;&emsp;&emsp; 
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 4: {{data.a.a1.c4}} V</span>
+                
+                        <br>
+                
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Cell 1 % of charge : {{data.a.a1.c1s}} % </span>    &emsp;&emsp;&emsp;    
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Cell 2 % of charge: {{data.a.a1.c2s}} % </span>
+                        <br>
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Cell 3 % of charge: {{data.a.a1.c3s}} %</span>      &emsp;&emsp;&emsp;
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Cell 4 % of charge: {{data.a.a1.c4s}} %</span>
+                </div>
+            </th>
+            <th>
+                <br>
+                <!-- bms avionics 2-->
+                <div style="color:white; text-align: center;">
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 1: {{data.a.a2.c1}} V</span>  &emsp;&emsp;&emsp;      
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 2: {{data.a.a2.c2}} V</span>
+                        <br>
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 3: {{data.a.a2.c3}} V</span>   &emsp;&emsp;&emsp; 
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 4: {{data.a.a2.c4}} V</span>
+                
+                        
+                
+                        <br>
+                
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 1 % of charge: {{data.a.a2.c1s}} %</span>    &emsp;&emsp;&emsp;    
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 2 % of charge: {{data.a.a2.c2s}} %</span>
+                        <br>
+                        <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 3 % of charge: {{data.a.a2.c3s}} %</span>      &emsp;&emsp;&emsp;
+                        <span style="font-size: 1.2em;  font-size: 1.5em;" > Cell 4 % of charge: {{data.a.a2.c4s}} %</span>
+                </div>
+            </th>
+            <th>
+                    <br>
+                    <!-- bms avionics 3-->
+                    <div style="color:white; text-align: center;">
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Avionics cell 1: {{data.a.a3.c1}} V</span>  &emsp;&emsp;&emsp;      
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 2: {{data.a.a3.c2}} V</span>
+                            <br>
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 3: {{data.a.a3.c3}} V</span>   &emsp;&emsp;&emsp; 
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Avionics cell 4: {{data.a.a3.c4}} V</span>
+                    
+                            
+                    
+                            <br>
+                    
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 1 % of charge: {{data.a.a3.c1s}} %</span>    &emsp;&emsp;&emsp;    
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 2 % of charge: {{data.a.a3.c2s}} %</span>
+                            <br>
+                            <span style="font-size: 1.2em;  font-size: 1.5em;"> Cell 3 % of charge: {{data.a.a3.c3s}} %</span>      &emsp;&emsp;&emsp;
+                            <span style="font-size: 1.2em;  font-size: 1.5em;" > Cell 4 % of charge: {{data.a.a3.c4s}} %</span>
+                    </div>
+                </th>
+            <tr>
+                <th>
+                    <!-- bms avionics 1 data -->
+                    <br>
+                    <div style="color:white; text-align: center;">
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Max Voltage: {{data.a.a1.maxV}} V</span>  &emsp;&emsp;&emsp;      
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Min Voltage: {{data.a.a1.minV}} V</span>
+                        <br>
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Pack Voltage: {{data.a.a1.AVG}} V</span>  &emsp;&emsp;&emsp;
+                        <span style="font-size: 1.2em; font-size: 1.5em;"> Output Current: {{data.a.a1.OC}} A</span>                         
+                    </div>
+                </th>
+                <th>
+                    <!-- bms avionics 2 data -->
+                    <br>
+                    <div style="color:white; text-align: center;">
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Max Voltage: {{data.a.a2.maxV}} V</span>  &emsp;&emsp;&emsp;      
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Min Voltage: {{data.a.a2.minV}} V</span>     
+                            <br>
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Pack Voltage: {{data.a.a2.AVG}}   V</span>  &emsp;&emsp;&emsp;
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Output Current: {{data.a.a2.OC}} A</span>                   
+                    </div>                    
+                </th>
+                <th>
+                    <!-- bms avionics 3 data -->
+                    <br>
+                    <div style="color:white; text-align: center;">
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Max Voltage: {{data.a.a3.maxV}} V</span>  &emsp;&emsp;&emsp;      
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Min Voltage: {{data.a.a3.minV}} V</span>     
+                            <br>
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Pack Voltage: {{data.a.a3.AVG}}   V</span>  &emsp;&emsp;&emsp;
+                            <span style="font-size: 1.2em; font-size: 1.5em;"> Output Current: {{data.a.a3.OC}} A</span>                   
+                    </div>                    
+                </th>
+                
+            </tr>
+        </tr>
+        <!--
+        <div>
+                <hr style="width: 100%; height:1px;border-top:1px solid yellow" />
+        </div>
+        -->
+
+        <tr>
+            <th>
+                <div style = "text-align: center;">
+                    <br>
+                    <div class="{{err_a1 == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; margin: auto;">{{err_a1 == false ? 'OK' : 'ERRRORS'}}</div>                    
+                </div>
+            </th>
+            <th>
+                <div style = "text-align: center;">
+                    <br>
+                    <div class="{{err_a2 == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; margin: auto;">{{err_a2 == false ? 'OK' : 'ERRRORS'}}</div>                  
+                </div>
+            </th>
+            <th>
+                <div style = "text-align: center;">
+                    <br>
+                    <div class="{{err_a3 == false ? 'green pulsate text-center' : 'pulsate red text-center'}}" style="font-size: 2em; width: 30%; margin: auto;">{{err_a3 == false ? 'OK' : 'ERRRORS'}}</div>                  
+                </div>
+            </th>
+        </tr>
+    
+    </table>  
+
+</body>

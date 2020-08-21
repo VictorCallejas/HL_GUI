@@ -1,0 +1,64 @@
+<div style="z-index: 10000">
+    <div ng-show="selectedChart == 'acceleration'" class="row no-gutter box dark bg">
+        <i class="fa fa-arrows spacing"></i>
+        <div class="col-sm-12">
+            <div class="box-header header-padding-graphs">
+                <h3>Acceleration
+                    <small>m/s^2</small>
+                </h3>
+            </div>
+            <div class="dropdown" ng-class="{open: open}" style="position: absolute; left: 96vh; top: -2vh;">
+                <a class="btn dropdown-toggle" ng-click="open=!open">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'acceleration'; open = !open">Acceleration</a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'velocity'; open = !open">Velocity</a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'velocityProfile'; open = !open">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="chart" class="box-body padding-none">
+                <div>
+                    <highchart id="highchart" config="accelerationChartConfig" style="display: block;"></highchart>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="selectedChart == 'velocity'" class="row no-gutter box dark bg">
+        <i class="fa fa-arrows spacing"></i>
+        <div class="col-sm-12">
+            <div class="box-header header-padding-graphs">
+                <h3>Velocity
+                    <small>m/s</small>
+                </h3>
+            </div>
+            <div class="dropdown" ng-class="{open: open}" style="position: absolute; left: 96vh; top: -2vh;">
+                <a class="btn dropdown-toggle" ng-click="open=!open">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'acceleration'; open = !open">Acceleration</a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'velocity'; open = !open">Velocity</a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" ng-click="selectedChart = 'velocityProfile'; open = !open">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="chart" class="box-body padding-none">
+                <div>
+                    <highchart id="highchart" config="velocityChartConfig" style="display: block;"></highchart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
