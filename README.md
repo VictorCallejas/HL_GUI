@@ -25,7 +25,7 @@ npm start
 #### Some Screenshoots
 The screenshots have been taken with the prototype disconected, so data and graphics are not shown
 Main
-![Principal](captures/captura_GUI.PNG)
+![Principal](captures/captura_GUI.png)
 Motors
 ![Principal](captures/c_motors.PNG)
 Brakes
